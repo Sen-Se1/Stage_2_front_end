@@ -1,0 +1,159 @@
+<app-header></app-header>
+<app-sidebar></app-sidebar>
+<div id="layoutSidenav_content">
+    <main>
+        <div class="container-fluid px-4">
+            <h1 class="mt-4">
+                Assignment
+            </h1>
+            <ol class="breadcrumb mb-4">
+                <li class="breadcrumb-item active">
+                    Show All Assignments
+                </li>
+            </ol>
+            <div class="card mb-4">
+                <div class="card-header d-flex justify-content-between align-items-center">
+                    <div>
+                        <i class="fas fa-tasks me-1"></i>
+                        Assignments
+                    </div>
+                    <form class="form-inline">
+                        <div class="input-group">
+                            <input class="form-control" type="text" [(ngModel)]="searchValue" name="searchValue"
+                                placeholder="Search for..." />
+                        </div>
+                    </form>
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table align-items-center mb-0" id="datatablesSimple">
+                            <thead>
+                                <tr>
+                                    <th (click)="sortTable('cin.cin')"
+                                        class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                        Cin
+                                        <span class="sort-indicator" *ngIf="sortTableService.sortKey === 'cin.cin'">
+                                            {{ sortTableService.reverse ? '▼' : '▲' }}
+                                        </span>
+                                    </th>
+                                    <th (click)="sortTable('codeS.codeS')"
+                                        class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
+                                        Stage Code
+                                        <span class="sort-indicator" *ngIf="sortTableService.sortKey === 'codeS.codeS'">
+                                            {{ sortTableService.reverse ? '▼' : '▲' }}
+                                        </span>
+                                    </th>
+                                    <th (click)="sortTable('lieuS')"
+                                        class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                        Stage Location
+                                        <span class="sort-indicator" *ngIf="sortTableService.sortKey === 'lieuS'">
+                                            {{ sortTableService.reverse ? '▼' : '▲' }}
+                                        </span>
+                                    </th>
+                                    <th (click)="sortTable('codeRap')"
+                                        class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
+                                        Rapport Code
+                                        <span class="sort-indicator" *ngIf="sortTableService.sortKey === 'codeRap'">
+                                            {{ sortTableService.reverse ? '▼' : '▲' }}
+                                        </span>
+                                    </th>
+                                    <th (click)="sortTable('dateD')"
+                                        class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                        Start Date
+                                        <span class="sort-indicator" *ngIf="sortTableService.sortKey === 'dateD'">
+                                            {{ sortTableService.reverse ? '▼' : '▲' }}
+                                        </span>
+                                    </th>
+                                    <th (click)="sortTable('dateF')"
+                                        class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
+                                        End Date
+                                        <span class="sort-indicator" *ngIf="sortTableService.sortKey === 'dateF'">
+                                            {{ sortTableService.reverse ? '▼' : '▲' }}
+                                        </span>
+                                    </th>
+                                    <th colspan="2"
+                                        class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                        Action
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <ng-container *ngFor="let assignment of getPaginatedData()">
+                                    <tr *ngIf="this.sortTableService.isAssignmentMatch(assignment, searchValue)"
+                                        [id]="assignment._id">
+                                        <td>
+                                            <div class="d-flex px-2 py-1">
+                                                <p class="text-xs text-secondary mb-0">
+                                                    {{ assignment.cin.cin }}
+                                                </p>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="d-flex px-2 py-1">
+                                                <p class="text-xs text-secondary mb-0">
+                                                    {{ assignment.codeS.codeS }}
+                                                </p>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="d-flex px-2 py-1">
+                                                <p class="text-xs text-secondary mb-0">
+                                                    {{ assignment.lieuS}}
+                                                </p>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="d-flex px-2 py-1">
+                                                <p class="text-xs text-secondary mb-0">
+                                                    {{ assignment.codeRap }}
+                                                </p>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="d-flex px-2 py-1">
+                                                <p class="text-xs text-secondary mb-0">
+                                                    {{ assignment.dateD }}
+                                                </p>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="d-flex px-2 py-1">
+                                                <p class="text-xs text-secondary mb-0">
+                                                    {{ assignment.dateF}}
+                                                </p>
+                                            </div>
+                                        </td>
+                                        <td class="align-middle text-center text-sm">
+                                            <button class="btn btn-block btn-danger waves-effect"
+                                                (click)="dangerBox(assignment._id)">
+                                                Delete
+                                            </button>
+                                        </td>
+                                        <td class="align-middle text-center text-sm">
+                                            <button class="btn btn-block btn-success waves-effect"
+                                                (click)="update(assignment._id)">
+                                                Edit
+                                            </button>
+                                        </td>
+                                    </tr>
+                                </ng-container>
+                            </tbody>
+                            <tfoot>
+                                <td colspan="8">
+                                    <div class="pagination" *ngIf="getPageNumbers().length > 1">
+                                        <button *ngFor="let page of getPageNumbers()" (click)="onPageChange(page)">
+                                            {{ page }}
+                                        </button>
+                                    </div>
+                                </td>
+                            </tfoot>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <div id="layoutAuthentication_footer">
+        <app-footer></app-footer>
+    </div>
+</div>

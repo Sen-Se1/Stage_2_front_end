@@ -1,0 +1,144 @@
+<div id="layoutSidenav_nav">
+    <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
+        <div class="sb-sidenav-menu">
+            <div class="nav">
+                <!-- Dashbord -->
+                <a class="nav-link" routerLink="" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+                    <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
+                    Dashboard
+                </a>
+
+                <!-- Department -->
+                <a class="nav-link collapsed cur-point" data-bs-toggle="collapse" data-bs-target="#collapseDepartment"
+                    [attr.aria-expanded]="isDepartmentOpen.toString()" aria-controls="collapseDepartment"
+                    (click)="toggleDepartmentCollapse()">
+                    <div class="sb-nav-link-icon"><i class="fas fa-building-user"></i></div>
+                    Department
+                    <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                </a>
+                <div [ngClass]="isDepartmentOpen ? 'collapse show' : 'collapse'" id="collapseDepartment"
+                    aria-labelledby="headingTwo" data-bs-parent="#sidenavAccordion">
+                    <nav class="sb-sidenav-menu-nested accordion">
+                        <a class="nav-link collapsed" routerLink="/create/department" routerLinkActive="active">
+                            Create
+                        </a>
+                        <a class="nav-link collapsed" routerLink="/departments" routerLinkActive="active">
+                            Show All
+                        </a>
+                    </nav>
+                </div>
+
+                <!-- Group -->
+                <a class="nav-link collapsed cur-point" data-bs-toggle="collapse" data-bs-target="#collapseGroup"
+                    [attr.aria-expanded]="isGroupOpen.toString()" aria-controls="collapseGroup"
+                    (click)="toggleGroupCollapse()">
+                    <div class="sb-nav-link-icon"><i class="fas fa-users"></i></div>
+                    Group
+                    <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                </a>
+                <div [ngClass]="isGroupOpen ? 'collapse show' : 'collapse'" id="collapseGroup"
+                    aria-labelledby="headingTwo" data-bs-parent="#sidenavAccordion">
+                    <nav class="sb-sidenav-menu-nested accordion">
+                        <a class="nav-link collapsed" routerLink="/create/group" routerLinkActive="active">
+                            Create
+                        </a>
+                        <a class="nav-link collapsed" routerLink="/groups" routerLinkActive="active">
+                            Show All
+                        </a>
+                    </nav>
+                </div>
+
+                <!-- Student -->
+                <a class="nav-link collapsed cur-point" data-bs-toggle="collapse" data-bs-target="#collapseStudent"
+                    [attr.aria-expanded]="isStudentOpen.toString()" aria-controls="collapseStudent"
+                    (click)="toggleStudentCollapse()">
+                    <div class="sb-nav-link-icon"><i class="fas fa-graduation-cap"></i></div>
+                    Student
+                    <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                </a>
+                <div [ngClass]="isStudentOpen ? 'collapse show' : 'collapse'" id="collapseStudent"
+                    aria-labelledby="headingTwo" data-bs-parent="#sidenavAccordion">
+                    <nav class="sb-sidenav-menu-nested accordion">
+                        <a class="nav-link collapsed" routerLink="/create/student" routerLinkActive="active">
+                            Create
+                        </a>
+                        <a class="nav-link collapsed" routerLink="/create/student/file" routerLinkActive="active">
+                            Create by file
+                        </a>
+                        <a class="nav-link collapsed" routerLink="/students" routerLinkActive="active">
+                            Show All
+                        </a>
+                    </nav>
+                </div>
+
+                <!-- Stage -->
+                <a class="nav-link collapsed cur-point" data-bs-toggle="collapse" data-bs-target="#collapseStage"
+                    [attr.aria-expanded]="isStageOpen.toString()" aria-controls="collapseStage"
+                    (click)="toggleStageCollapse()">
+                    <div class="sb-nav-link-icon"><i class="fas fa-school"></i></div>
+                    Stage
+                    <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                </a>
+                <div [ngClass]="isStageOpen ? 'collapse show' : 'collapse'" id="collapseStage"
+                    aria-labelledby="headingTwo" data-bs-parent="#sidenavAccordion">
+                    <nav class="sb-sidenav-menu-nested accordion">
+                        <a class="nav-link collapsed" routerLink="/create/stage" routerLinkActive="active">
+                            Create
+                        </a>
+                        <a class="nav-link collapsed" routerLink="/stages" routerLinkActive="active">
+                            Show All
+                        </a>
+                    </nav>
+                </div>
+
+                <!-- Assignment -->
+                <a class="nav-link collapsed cur-point" data-bs-toggle="collapse" data-bs-target="#collapseAssignment"
+                    [attr.aria-expanded]="isAssignmentOpen.toString()" aria-controls="collapseAssignment"
+                    (click)="toggleAssignmentCollapse()">
+                    <div class="sb-nav-link-icon"><i class="fas fa-tasks"></i></div>
+                    Assignment
+                    <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                </a>
+                <div [ngClass]="isAssignmentOpen ? 'collapse show' : 'collapse'" id="collapseAssignment"
+                    aria-labelledby="headingTwo" data-bs-parent="#sidenavAccordion">
+                    <nav class="sb-sidenav-menu-nested accordion">
+                        <a class="nav-link collapsed" routerLink="/create/assignment" routerLinkActive="active">
+                            Create
+                        </a>
+                        <a class="nav-link collapsed" routerLink="/assignments" routerLinkActive="active">
+                            Show All
+                        </a>
+                    </nav>
+                </div>
+
+                <!-- Add Moderator -->
+                <ng-container *ngIf="auth.userRole === 'ADMIN'">
+                    <a class="nav-link collapsed cur-point" data-bs-toggle="collapse"
+                        data-bs-target="#collapseModerator" [attr.aria-expanded]="isModeratorOpen.toString()"
+                        aria-controls="collapseModerator" (click)="toggleModeratorCollapse()">
+                        <div class="sb-nav-link-icon"><i class="fa-solid fa-user-tie"></i></div>
+                        Moderator
+                        <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                    </a>
+                    <div [ngClass]="isModeratorOpen ? 'collapse show' : 'collapse'" id="collapseModerator"
+                        aria-labelledby="headingTwo" data-bs-parent="#sidenavAccordion">
+                        <nav class="sb-sidenav-menu-nested accordion">
+                            <a class="nav-link collapsed" routerLink="/add-admin-and-mod" routerLinkActive="active">
+                                Add Moderator
+                            </a>
+                            <a class="nav-link collapsed" routerLink="/admins-and-mods" routerLinkActive="active">
+                                Show All
+                            </a>
+                        </nav>
+                    </div>
+                </ng-container>
+            </div>
+        </div>
+
+        <!-- who is logged in -->
+        <div class="sb-sidenav-footer">
+            <div class="small">Logged in as:</div>
+            {{loggedIn}}
+        </div>
+    </nav>
+</div>

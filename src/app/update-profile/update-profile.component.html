@@ -1,0 +1,77 @@
+<app-header></app-header>
+<app-sidebar></app-sidebar>
+<div id="layoutSidenav_content">
+    <main>
+        <div class="container-fluid px-4">
+            <h1 class="mt-4">Profile</h1>
+            <ol class="breadcrumb mb-4">
+                <li class="breadcrumb-item active">
+                    Update Profile
+                </li>
+            </ol>
+            <div class="card mb-4">
+                <div class="card-header d-flex justify-content-between align-items-center">
+                    <div>
+                        <i class="fas fa-user fa-fw me-1"></i>
+                        Profile
+                    </div>
+                </div>
+                <div class="card-body justify-content-center">
+                    <form class="form-inline" [formGroup]="updateProfileForm" autocomplete="off">
+                        <div class="input-group mb-3">
+                            <label class="input-group-text" for="usernameInput">Username :</label>
+                            <input [(ngModel)]="data.username" formControlName="username" name="usernameInput"
+                                class="form-control" id="usernameInput" type="text" placeholder="Username ..." />
+                        </div>
+                        <div class="form-text text-danger alert-custom"
+                            *ngIf="UsernameProfile.invalid && (UsernameProfile.touched || UsernameProfile.dirty)">
+                            <div *ngIf="UsernameProfile.hasError('required')">Username is required.</div>
+                            <div *ngIf="UsernameProfile.hasError('minlength')">Username should be at least 3 characters
+                                long.</div>
+                            <div *ngIf="UsernameProfile.hasError('pattern')">Username should only contain letters and
+                                numbers.</div>
+                        </div>
+                        <div class="input-group mb-3">
+                            <label class="input-group-text" for="emaillInput">Email :</label>
+                            <input [(ngModel)]="data.email" formControlName="email" name="email" class="form-control"
+                                id="emaillInput" type="email" placeholder="Student Email..." />
+                        </div>
+                        <div class="form-text text-danger alert-custom"
+                            *ngIf="EmailProfile.invalid && (EmailProfile.touched || EmailProfile.dirty)">
+                            <div *ngIf="EmailProfile.hasError('required')">Email is required.</div>
+                            <div *ngIf="EmailProfile.hasError('email')">Invalid email format.</div>
+                        </div>
+                        <div class="input-group mb-3">
+                            <label class="input-group-text" for="inputPassword">Current Password :</label>
+                            <input [(ngModel)]="data.password" formControlName="password" name="inputPassword"
+                                class="form-control" id="inputPassword" type="password"
+                                placeholder="Current Password..." />
+                        </div>
+                        <div class="form-text text-danger alert-custom"
+                            *ngIf="PasswordProfile.invalid && (PasswordProfile.touched || PasswordProfile.dirty)">
+                            <div *ngIf="PasswordProfile.hasError('required')">Current password is required.</div>
+                            <div *ngIf="PasswordProfile.hasError('minlength')">Password should be at least 8 characters
+                                long.</div>
+                        </div>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div class="input-group mb-3">
+                                <button class="btn btn-success" type="button" [disabled]="updateProfileForm.invalid"
+                                    (click)="update()">
+                                    Update Profile
+                                </button>
+                            </div>
+                            <div class="changePwd ms-auto">
+                                <a (click)="changePwd(data.id)">
+                                    Change Password
+                                </a>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </main>
+    <div id="layoutAuthentication_footer">
+        <app-footer></app-footer>
+    </div>
+</div>

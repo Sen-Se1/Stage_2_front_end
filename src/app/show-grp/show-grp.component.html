@@ -1,0 +1,117 @@
+<app-header></app-header>
+<app-sidebar></app-sidebar>
+<div id="layoutSidenav_content">
+    <main>
+        <div class="container-fluid px-4">
+            <h1 class="mt-4">
+                Group
+            </h1>
+            <ol class="breadcrumb mb-4">
+                <li class="breadcrumb-item active">
+                    Show All Groups
+                </li>
+            </ol>
+            <div class="card mb-4">
+                <div class="card-header d-flex justify-content-between align-items-center">
+                    <div>
+                        <i class="fas fa-users me-1"></i>
+                        Groups
+                    </div>
+                    <form class="form-inline">
+                        <div class="input-group">
+                            <input class="form-control" type="text" [(ngModel)]="searchValue" name="searchValue"
+                                placeholder="Search for..." />
+                        </div>
+                    </form>
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table align-items-center mb-0" id="datatablesSimple">
+                            <thead>
+                                <tr>
+                                    <th (click)="sortTable('codeG')"
+                                        class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                        Code
+                                        <span class="sort-indicator" *ngIf="sortTableService.sortKey === 'codeG'">
+                                            {{ sortTableService.reverse ? '▼' : '▲' }}
+                                        </span>
+                                    </th>
+                                    <th (click)="sortTable('libelle')"
+                                        class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
+                                        Label
+                                        <span class="sort-indicator" *ngIf="sortTableService.sortKey === 'libelle'">
+                                            {{ sortTableService.reverse ? '▼' : '▲' }}
+                                        </span>
+                                    </th>
+                                    <th (click)="sortTable('codeD.libelle')"
+                                        class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
+                                        Department
+                                        <span class="sort-indicator"
+                                            *ngIf="sortTableService.sortKey === 'codeD.libelle'">
+                                            {{ sortTableService.reverse ? '▼' : '▲' }}
+                                        </span>
+                                    </th>
+                                    <th colspan="2"
+                                        class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                        Action
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <ng-container *ngFor="let group of getPaginatedData()">
+                                    <tr *ngIf="this.sortTableService.isGroupMatch(group, searchValue)" [id]="group._id">
+                                        <td>
+                                            <div class="d-flex px-2 py-1">
+                                                <p class="text-xs text-secondary mb-0">
+                                                    {{ group.codeG }}
+                                                </p>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="d-flex px-2 py-1">
+                                                <p class="text-xs text-secondary mb-0">
+                                                    {{ group.libelle }}
+                                                </p>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="d-flex px-2 py-1">
+                                                <p class="text-xs text-secondary mb-0">
+                                                    {{ group.codeD.libelle }}
+                                                </p>
+                                            </div>
+                                        </td>
+                                        <td class="align-middle text-center text-sm">
+                                            <button class="btn btn-block btn-danger waves-effect"
+                                                (click)="dangerBox(group._id)">
+                                                Delete
+                                            </button>
+                                        </td>
+                                        <td class="align-middle text-center text-sm">
+                                            <button class="btn btn-block btn-success waves-effect"
+                                                (click)="update(group._id)">
+                                                Edit
+                                            </button>
+                                        </td>
+                                    </tr>
+                                </ng-container>
+                            </tbody>
+                            <tfoot>
+                                <td colspan="5">
+                                    <div class="pagination" *ngIf="getPageNumbers().length > 1">
+                                        <button *ngFor="let page of getPageNumbers()" (click)="onPageChange(page)">
+                                            {{ page }}
+                                        </button>
+                                    </div>
+                                </td>
+                            </tfoot>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <div id="layoutAuthentication_footer">
+        <app-footer></app-footer>
+    </div>
+</div>

@@ -1,0 +1,35 @@
+<app-header></app-header>
+<app-sidebar></app-sidebar>
+<div id="layoutSidenav_content">
+    <main>
+        <div class="container-fluid px-4">
+            <h1 class="mt-4">Student</h1>
+            <ol class="breadcrumb mb-4">
+                <li class="breadcrumb-item active">Create Student By File</li>
+            </ol>
+            <div class="card mb-4">
+                <div class="card-header d-flex justify-content-between align-items-center">
+                    <div>
+                        <i class="fas fa-graduation-cap me-1"></i>
+                        Student
+                    </div>
+                </div>
+                <div class="card-body justify-content-center">
+                    <form class="form-inline" [formGroup]="createStdForm" autocomplete="off">
+                        <div class="input-group mb-3">
+                            <input formControlName="file" name="file" class="form-control"
+                                id="file" type="file" (change)="getFile($event)"  />
+                        </div>
+                        <div class="input-group mb-3">
+                            <button class="btn btn-success" [disabled]="createStdForm.invalid" (click)="create()">Create
+                                Student</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </main>
+    <div id="layoutAuthentication_footer">
+        <app-footer></app-footer>
+    </div>
+</div>

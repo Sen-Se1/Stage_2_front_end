@@ -1,0 +1,91 @@
+<app-header></app-header>
+<app-sidebar></app-sidebar>
+<div id="layoutSidenav_content">
+    <main>
+        <div class="container-fluid px-4">
+            <h1 class="mt-4">Moderator</h1>
+            <ol class="breadcrumb mb-4">
+                <li class="breadcrumb-item active">Add Moderator</li>
+            </ol>
+            <div class="card mb-4">
+                <div class="card-header d-flex justify-content-between align-items-center">
+                    <div>
+                        <i class="fa-solid fa-user-tie me-1"></i>
+                        Moderator
+                    </div>
+                </div>
+                <div class="card-body justify-content-center">
+                    <form class="form-inline" [formGroup]="createModForm" autocomplete="off">
+                        <div class="input-group mb-3">
+                            <label class="input-group-text" for="usernameInput">Username :</label>
+                            <input [(ngModel)]="data.username" formControlName="username" name="usernameInput"
+                                class="form-control" id="usernameInput" type="text" placeholder="Username ..." />
+                        </div>
+                        <div class="form-text text-danger alert-custom"
+                            *ngIf="Username.invalid && (Username.touched || Username.dirty)">
+                            <div *ngIf="Username.hasError('required')">Username is required.</div>
+                            <div *ngIf="Username.hasError('minlength')">Username should be at least 3 characters long.
+                            </div>
+                            <div *ngIf="Username.hasError('pattern')">Username should only contain letters and numbers.
+                            </div>
+                        </div>
+                        <div class="input-group mb-3">
+                            <label class="input-group-text" for="emailInput">Email :</label>
+                            <input [(ngModel)]="data.email" formControlName="email" name="emailInput"
+                                class="form-control" id="emailInput" type="email" placeholder="Email ..." />
+                        </div>
+                        <div class="form-text text-danger alert-custom"
+                            *ngIf="Email.invalid && (Email.touched || Email.dirty)">
+                            <div *ngIf="Email.hasError('required')">Email is required.</div>
+                            <div *ngIf="Email.hasError('email')">Invalid email format.</div>
+                        </div>
+                        <div class="input-group mb-3">
+                            <label class="input-group-text" for="passwordInput">Password :</label>
+                            <input [(ngModel)]="data.password" formControlName="password" name="passwordInput"
+                                class="form-control" id="passwordInput" type="password" placeholder="Password ..." />
+                        </div>
+                        <div class="form-text text-danger alert-custom"
+                            *ngIf="Password.invalid && (Password.touched || Password.dirty)">
+                            <div *ngIf="Password.hasError('required')">Password is required.</div>
+                            <div *ngIf="Password.hasError('minlength')">Password should be at least 8 characters long.
+                            </div>
+                        </div>
+                        <div class="input-group mb-3">
+                            <label class="input-group-text" for="passwordConfirmationInput">Password Confirmation
+                                :</label>
+                            <input [(ngModel)]="data.passwordConfirm" formControlName="passwordConfirm"
+                                name="passwordConfirmationInput" class="form-control" id="passwordConfirmationInput"
+                                type="password" placeholder="Password Confirmation ..." />
+                        </div>
+                        <div class="form-text text-danger alert-custom"
+                            *ngIf="PasswordConfirm.invalid && (PasswordConfirm.touched || PasswordConfirm.dirty)">
+                            <div *ngIf="PasswordConfirm.hasError('required')">Password confirmation is required.</div>
+                            <div *ngIf="PasswordConfirm.hasError('minlength')">Password confirmation should be at least
+                                8 characters long.</div>
+                        </div>
+                        <div class="input-group mb-3">
+                            <label class="input-group-text" for="roleInput">Role :&nbsp;&nbsp;&nbsp;</label>
+                            <select [(ngModel)]="data.role" formControlName="role" name="roleInput"
+                                class="form-select cur-point" aria-label="Default select example">
+                                <option [ngValue]="'default'" selected>Select a Role</option>
+                                <option value="Moderator">Moderator</option>
+                            </select>
+                        </div>
+                        <div class="form-text text-danger alert-custom"
+                            *ngIf="Role.invalid && (Role.touched || Role.dirty)">
+                            <div *ngIf="Role.hasError('required')">Role is required.</div>
+                            <div *ngIf="Role.hasError('invalidRole')">Please select a valid role.</div>
+                        </div>
+                        <div class="input-group mb-3">
+                            <button class="btn btn-success" [disabled]="createModForm.invalid" (click)="create()">Add
+                                Moderator</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </main>
+    <div id="layoutAuthentication_footer">
+        <app-footer></app-footer>
+    </div>
+</div>

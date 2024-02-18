@@ -1,0 +1,95 @@
+<p>update-etud works!</p>
+<app-header></app-header>
+<app-sidebar></app-sidebar>
+<div id="layoutSidenav_content">
+    <main>
+        <div class="container-fluid px-4">
+            <h1 class="mt-4">Student</h1>
+            <ol class="breadcrumb mb-4">
+                <li class="breadcrumb-item active">Update Student</li>
+            </ol>
+            <div class="card mb-4">
+                <div class="card-header d-flex justify-content-between align-items-center">
+                    <div>
+                        <i class="fas fa-graduation-cap me-1"></i>
+                        Student
+                    </div>
+                </div>
+                <div class="card-body justify-content-center">
+                    <form class="form-inline" [formGroup]="updateStdForm" autocomplete="off">
+                        <div class="input-group mb-3">
+                            <label class="input-group-text" for="codeInput">Cin :</label>
+                            <input [(ngModel)]="data.cin" formControlName="cin" name="cin" class="form-control"
+                                id="codeInput" type="text" placeholder="Student CIN..." />
+                        </div>
+                        <div class="form-text text-danger alert-custom"
+                            *ngIf="Cin.invalid && (Cin.touched || Cin.dirty)">
+                            <div *ngIf="Cin.hasError('required')">Cin is required.</div>
+                            <div *ngIf="Cin.hasError('pattern')">Invalid cin format (should be 8 digits).</div>
+                        </div>
+                        <div class="input-group mb-3">
+                            <label class="input-group-text" for="labelInput">Last Name :</label>
+                            <input [(ngModel)]="data.nom" formControlName="nom" name="nom" class="form-control"
+                                id="labelInput" type="text" placeholder="Student Last Name..." />
+                        </div>
+                        <div class="form-text text-danger alert-custom"
+                            *ngIf="Nom.invalid && (Nom.touched || Nom.dirty)">
+                            <div *ngIf="Nom.hasError('required')">Last name is required.</div>
+                            <div *ngIf="Nom.hasError('pattern')">Invalid last name format.</div>
+                        </div>
+                        <div class="input-group mb-3">
+                            <label class="input-group-text" for="codeInput">First Name :</label>
+                            <input [(ngModel)]="data.prenom" formControlName="prenom" name="prenom" class="form-control"
+                                id="codeInput" type="text" placeholder="Student First Name..." />
+                        </div>
+                        <div class="form-text text-danger alert-custom"
+                            *ngIf="Prenom.invalid && (Prenom.touched || Prenom.dirty)">
+                            <div *ngIf="Prenom.hasError('required')">First name is required.</div>
+                            <div *ngIf="Prenom.hasError('pattern')">Invalid first name format.</div>
+                        </div>
+                        <div class="input-group mb-3">
+                            <label class="input-group-text" for="labelInput">Email :</label>
+                            <input [(ngModel)]="data.email" formControlName="email" name="email" class="form-control"
+                                id="labelInput" type="email" placeholder="Student Email..." />
+                        </div>
+                        <div class="form-text text-danger alert-custom"
+                            *ngIf="Email.invalid && (Email.touched || Email.dirty)">
+                            <div *ngIf="Email.hasError('required')">Email is required.</div>
+                            <div *ngIf="Email.hasError('email')">Invalid email format.</div>
+                        </div>
+                        <div class="input-group mb-3">
+                            <label class="input-group-text" for="labelInput">Phone :</label>
+                            <input [(ngModel)]="data.tel" formControlName="tel" name="tel" class="form-control"
+                                id="labelInput" type="text" placeholder="Student Phone..." />
+                        </div>
+                        <div class="form-text text-danger alert-custom"
+                            *ngIf="Tel.invalid && (Tel.touched || Tel.dirty)">
+                            <div *ngIf="Tel.hasError('required')">Phone is required.</div>
+                            <div *ngIf="Tel.hasError('pattern')">Invalid phone number format (should be 8 digits).</div>
+                        </div>
+                        <div class="input-group mb-3">
+                            <label class="input-group-text" for="codeInput">Group :&nbsp;&nbsp;&nbsp;</label>
+                            <select [(ngModel)]="data.codeG" formControlName="codeG" name="codeG"
+                                class="form-select cur-point" aria-label="Default select example">
+                                <option [ngValue]="'default'" selected>Select a group</option>
+                                <option *ngFor="let group of groups" [value]="group._id">{{ group.codeG }}</option>
+                            </select>
+                        </div>
+                        <div class="form-text text-danger alert-custom"
+                            *ngIf="CodeG.invalid && (CodeG.touched || CodeG.dirty)">
+                            <div *ngIf="CodeG.hasError('required')">Group is required.</div>
+                            <div *ngIf="CodeG.hasError('invalidCodeG')">Please select a valid group.</div>
+                        </div>
+                        <div class="input-group mb-3">
+                            <button class="btn btn-success" [disabled]="updateStdForm.invalid" (click)="update()">Update
+                                Student</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </main>
+    <div id="layoutAuthentication_footer">
+        <app-footer></app-footer>
+    </div>
+</div>

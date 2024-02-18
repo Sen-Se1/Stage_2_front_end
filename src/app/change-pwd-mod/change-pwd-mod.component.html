@@ -1,0 +1,54 @@
+<app-header></app-header>
+<app-sidebar></app-sidebar>
+<div id="layoutSidenav_content">
+    <main>
+        <div class="container-fluid px-4">
+            <h1 class="mt-4">Moderator</h1>
+            <ol class="breadcrumb mb-4">
+                <li class="breadcrumb-item active">Change Password Moderator</li>
+            </ol>
+            <div class="card mb-4">
+                <div class="card-header d-flex justify-content-between align-items-center">
+                    <div>
+                        <i class="fa-solid fa-user-tie me-1"></i>
+                        Moderator
+                    </div>
+                </div>
+                <div class="card-body justify-content-center">
+                    <form class="form-inline" [formGroup]="pudatePwdModForm" autocomplete="off">
+                        <div class="input-group mb-3">
+                            <label class="input-group-text" for="passwordInput">Password :</label>
+                            <input [(ngModel)]="data.password" formControlName="password" name="passwordInput"
+                                class="form-control" id="passwordInput" type="password" placeholder="Password ..." />
+                        </div>
+                        <div class="form-text text-danger alert-custom"
+                            *ngIf="Password.invalid && (Password.touched || Password.dirty)">
+                            <div *ngIf="Password.hasError('required')">Password is required.</div>
+                            <div *ngIf="Password.hasError('minlength')">Password should be at least 8 characters long.
+                            </div>
+                        </div>
+                        <div class="input-group mb-3">
+                            <label class="input-group-text" for="passwordConfirmInput">Password Confirmation :</label>
+                            <input [(ngModel)]="data.passwordConfirm" formControlName="passwordConfirm"
+                                name="passwordConfirmInput" class="form-control" id="passwordConfirmInput"
+                                type="password" placeholder="Password Confirmation ..." />
+                        </div>
+                        <div class="form-text text-danger alert-custom"
+                            *ngIf="PasswordConfirm.invalid && (PasswordConfirm.touched || PasswordConfirm.dirty)">
+                            <div *ngIf="PasswordConfirm.hasError('required')">Password confirmation is required.</div>
+                            <div *ngIf="PasswordConfirm.hasError('minlength')">Password confirmation should be at least
+                                8 characters long.</div>
+                        </div>
+                        <div class="input-group mb-3">
+                            <button class="btn btn-success" [disabled]="pudatePwdModForm.invalid"
+                                (click)="changePwd()">Change password</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </main>
+    <div id="layoutAuthentication_footer">
+        <app-footer></app-footer>
+    </div>
+</div>

@@ -1,0 +1,116 @@
+<app-header></app-header>
+<app-sidebar></app-sidebar>
+<div id="layoutSidenav_content">
+    <main>
+        <div class="container-fluid px-4">
+            <h1 class="mt-4">
+                Stage
+            </h1>
+            <ol class="breadcrumb mb-4">
+                <li class="breadcrumb-item active">
+                    Show All Stages
+                </li>
+            </ol>
+            <div class="card mb-4">
+                <div class="card-header d-flex justify-content-between align-items-center">
+                    <div>
+                        <i class="fas fa-school me-1"></i>
+                        Stages
+                    </div>
+                    <form class="form-inline">
+                        <div class="input-group">
+                            <input class="form-control" type="text" [(ngModel)]="searchValue" name="searchValue"
+                                placeholder="Search for..." />
+                        </div>
+                    </form>
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table align-items-center mb-0" id="datatablesSimple">
+                            <thead>
+                                <tr>
+                                    <th (click)="sortTable('codeS')"
+                                        class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                        Code
+                                        <span class="sort-indicator" *ngIf="sortTableService.sortKey === 'codeS'">
+                                            {{ sortTableService.reverse ? '▼' : '▲' }}
+                                        </span>
+                                    </th>
+                                    <th (click)="sortTable('type')"
+                                        class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
+                                        Type
+                                        <span class="sort-indicator" *ngIf="sortTableService.sortKey === 'type'">
+                                            {{ sortTableService.reverse ? '▼' : '▲' }}
+                                        </span>
+                                    </th>
+                                    <th (click)="sortTable('duree')"
+                                        class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
+                                        Duration
+                                        <span class="sort-indicator" *ngIf="sortTableService.sortKey === 'duree'">
+                                            {{ sortTableService.reverse ? '▼' : '▲' }}
+                                        </span>
+                                    </th>
+                                    <th colspan="2"
+                                        class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                        Action
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <ng-container *ngFor="let stage of getPaginatedData()">
+                                    <tr *ngIf="this.sortTableService.isStageMatch(stage, searchValue)" [id]="stage._id">
+                                        <td>
+                                            <div class="d-flex px-2 py-1">
+                                                <p class="text-xs text-secondary mb-0">
+                                                    {{ stage.codeS }}
+                                                </p>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="d-flex px-2 py-1">
+                                                <p class="text-xs text-secondary mb-0">
+                                                    {{ stage.type }}
+                                                </p>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="d-flex px-2 py-1">
+                                                <p class="text-xs text-secondary mb-0">
+                                                    {{ stage.duree}}
+                                                </p>
+                                            </div>
+                                        </td>
+                                        <td class="align-middle text-center text-sm">
+                                            <button class="btn btn-block btn-danger waves-effect"
+                                                (click)="dangerBox(stage._id)">
+                                                Delete
+                                            </button>
+                                        </td>
+                                        <td class="align-middle text-center text-sm">
+                                            <button class="btn btn-block btn-success waves-effect"
+                                                (click)="update(stage._id)">
+                                                Edit
+                                            </button>
+                                        </td>
+                                    </tr>
+                                </ng-container>
+                            </tbody>
+                            <tfoot>
+                                <td colspan="5">
+                                    <div class="pagination" *ngIf="getPageNumbers().length > 1">
+                                        <button *ngFor="let page of getPageNumbers()" (click)="onPageChange(page)">
+                                            {{ page }}
+                                        </button>
+                                    </div>
+                                </td>
+                            </tfoot>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <div id="layoutAuthentication_footer">
+        <app-footer></app-footer>
+    </div>
+</div>

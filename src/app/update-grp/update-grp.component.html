@@ -1,0 +1,67 @@
+<app-header></app-header>
+<app-sidebar></app-sidebar>
+<div id="layoutSidenav_content">
+    <main>
+        <div class="container-fluid px-4">
+            <h1 class="mt-4">Group</h1>
+            <ol class="breadcrumb mb-4">
+                <li class="breadcrumb-item active">Update Group</li>
+            </ol>
+            <div class="card mb-4">
+                <div class="card-header d-flex justify-content-between align-items-center">
+                    <div>
+                        <i class="fas fa-users me-1"></i>
+                        Group
+                    </div>
+                </div>
+                <div class="card-body justify-content-center">
+                    <form class="form-inline" [formGroup]="updateGrpForm" autocomplete="off">
+                        <div class="input-group mb-3">
+                            <label class="input-group-text" for="codeInput">Code :</label>
+                            <input [(ngModel)]="data.codeG" formControlName="code" name="Code" class="form-control"
+                                id="codeInput" type="text" placeholder="Group Code..." />
+                        </div>
+                        <div class="form-text text-danger alert-custom"
+                            *ngIf="Code.invalid && (Code.touched || Code.dirty)">
+                            <div *ngIf="Code.hasError('required')">Group code is required.</div>
+                            <div *ngIf="Code.hasError('minlength')">Group code should be at least 3 characters long.
+                            </div>
+                            <div *ngIf="Code.hasError('pattern')">Group code should only contain letters and numbers.
+                            </div>
+                        </div>
+                        <div class="input-group mb-3">
+                            <label class="input-group-text" for="labelInput">Label :</label>
+                            <input [(ngModel)]="data.libelle" formControlName="label" name="libelle"
+                                class="form-control" id="labelInput" type="text" placeholder="Group Label..." />
+                        </div>
+                        <div class="form-text text-danger alert-custom"
+                            *ngIf="Label.invalid && (Label.touched || Label.dirty)">
+                            <div *ngIf="Label.hasError('required')">Group label is required.</div>
+                        </div>
+                        <div class="input-group mb-3">
+                            <label class="input-group-text" for="codeInput">Department :&nbsp;&nbsp;&nbsp;</label>
+                            <select [(ngModel)]="data.codeD" formControlName="codeD" name="codeD" name="codeD"
+                                class="form-select cur-point" aria-label="Default select example">
+                                <option [ngValue]="'default'" selected>Select a department</option>
+                                <option *ngFor="let department of departments" [value]="department._id">{{
+                                    department.libelle }}</option>
+                            </select>
+                        </div>
+                        <div class="form-text text-danger alert-custom"
+                            *ngIf="CodeD.invalid && (CodeD.touched || CodeD.dirty)">
+                            <div *ngIf="CodeD.hasError('required')">Department is required.</div>
+                            <div *ngIf="CodeD.hasError('invalidDepartment')">Please select a valid department.</div>
+                        </div>
+                        <div class="input-group mb-3">
+                            <button class="btn btn-success" [disabled]="updateGrpForm.invalid" (click)="update()">Update
+                                Group</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </main>
+    <div id="layoutAuthentication_footer">
+        <app-footer></app-footer>
+    </div>
+</div>

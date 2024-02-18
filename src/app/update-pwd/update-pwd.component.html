@@ -1,0 +1,74 @@
+<app-header></app-header>
+<app-sidebar></app-sidebar>
+<div id="layoutSidenav_content">
+    <main>
+        <div class="container-fluid px-4">
+            <h1 class="mt-4">Profile</h1>
+            <ol class="breadcrumb mb-4">
+                <li class="breadcrumb-item active">
+                    Update Password
+                </li>
+            </ol>
+            <div class="card mb-4">
+                <div class="card-header d-flex justify-content-between align-items-center">
+                    <div>
+                        <i class="fa-solid fa-lock"></i>
+                        Password
+                    </div>
+                </div>
+                <div class="card-body justify-content-center">
+                    <form class="form-inline" [formGroup]="updateProfilePwdForm" autocomplete="off">
+                        <div class="input-group mb-3">
+                            <label class="input-group-text" for="currentPassword">Current Password :</label>
+                            <input [(ngModel)]="data.currentPassword" formControlName="currentPassword"
+                                name="currentPassword" class="form-control" id="currentPassword" type="password"
+                                placeholder="Current Password..." />
+                        </div>
+                        <div class="form-text text-danger alert-custom"
+                            *ngIf="upCurrentPasswordProfile.invalid && (upCurrentPasswordProfile.touched || upCurrentPasswordProfile.dirty)">
+                            <div *ngIf="upCurrentPasswordProfile.hasError('required')">Current password is required.
+                            </div>
+                            <div *ngIf="upCurrentPasswordProfile.hasError('minlength')">Current password should be at
+                                least 8 characters long.</div>
+                        </div>
+                        <div class="input-group mb-3">
+                            <label class="input-group-text" for="inputPassword">New Password :</label>
+                            <input [(ngModel)]="data.password" formControlName="password" name="inputPassword"
+                                class="form-control" id="inputPassword" type="password" placeholder="New Password..." />
+                        </div>
+                        <div class="form-text text-danger alert-custom"
+                            *ngIf="upPasswordProfile.invalid && (upPasswordProfile.touched || upPasswordProfile.dirty)">
+                            <div *ngIf="upPasswordProfile.hasError('required')">New password is required.</div>
+                            <div *ngIf="upPasswordProfile.hasError('minlength')">New password should be at least 8
+                                characters long.</div>
+                        </div>
+                        <div class="input-group mb-3">
+                            <label class="input-group-text" for="passwordConfirmInput">Password Confirmation :</label>
+                            <input [(ngModel)]="data.passwordConfirm" formControlName="passwordConfirm"
+                                name="passwordConfirmInput" class="form-control" id="passwordConfirmInput"
+                                type="password" placeholder="Password Confirmation..." />
+                        </div>
+                        <div class="form-text text-danger alert-custom"
+                            *ngIf="upPasswordConfirmProfile.invalid && (upPasswordConfirmProfile.touched || upPasswordConfirmProfile.dirty)">
+                            <div *ngIf="upPasswordConfirmProfile.hasError('required')">Password confirmation is
+                                required.</div>
+                            <div *ngIf="upPasswordConfirmProfile.hasError('minlength')">Password confirmation should be
+                                at least 8 characters long.</div>
+                        </div>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div class="input-group mb-3">
+                                <button class="btn btn-success" type="button" [disabled]="updateProfilePwdForm.invalid"
+                                    (click)="update()">
+                                    Change password
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </main>
+    <div id="layoutAuthentication_footer">
+        <app-footer></app-footer>
+    </div>
+</div>

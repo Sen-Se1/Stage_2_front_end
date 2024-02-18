@@ -1,0 +1,25 @@
+<app-header></app-header>
+<app-sidebar></app-sidebar>
+<div id="layoutSidenav_content">
+    <main>
+        <div class="container px-4" style="margin-left: 0px;">
+            <h1 class="mt-4">Dashboard</h1>
+            <ol class="breadcrumb mb-4">
+                <li class="breadcrumb-item active">Dashboard</li>
+            </ol>
+            <div class="row">
+                <div class="col-xl-4" *ngFor="let result of results | keyvalue">
+                    <div class="card text-black mb-4 dash-alert 3-item">
+                        <div class="card-body dash-txt">{{ result.key }}</div>
+                        <div class="card-footer d-flex align-items-center justify-content-between">
+                            <p>You have {{ result.value }} {{ result.key }}s</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <div id="layoutAuthentication_footer">
+        <app-footer></app-footer>
+    </div>
+</div>
