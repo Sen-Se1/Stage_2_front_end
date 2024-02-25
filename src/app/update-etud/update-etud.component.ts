@@ -25,7 +25,7 @@ export class UpdateEtudComponent {
   groups: any[] = [];
   idEtud = ''
   ngOnInit(): void {
-    if (this.auth.isLoggedIn()) {
+    if (this.auth.isAdminMod()) {
       this.route.params.subscribe(params => {
         this.idEtud = params['id']; // Retrieve the ID from the route parameters
         this.auth.getByIdStu(this.idEtud).subscribe((res: any) => {

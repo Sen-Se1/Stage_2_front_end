@@ -24,7 +24,7 @@ export class CreateEtudComponent {
   groups: any[] = [];
 
   ngOnInit(): void {
-    if (this.auth.isLoggedIn()) {
+    if (this.auth.isAdminMod()) {
       this.auth.getAllGrp().subscribe((res: any) => {
         this.groups = res.data;
       }, err => {

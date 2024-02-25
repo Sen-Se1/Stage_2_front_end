@@ -61,7 +61,7 @@ const routes: Routes = [
   // student routes
   { path: 'students', component: ShowEtudComponent, title: 'Students' },
   { path: 'create/student', component: CreateEtudComponent, title: 'Create Student' },
-  { path: 'create/student/file', component: CreateStudByFileComponent, title: 'Create Student By File' },
+  { path: 'create/students/file', component: CreateStudByFileComponent, title: 'Create Student By File' },
   { path: 'update/student/:id', component: UpdateEtudComponent, title: 'Update Student' },
 
   // stage routes

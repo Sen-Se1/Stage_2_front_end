@@ -16,7 +16,7 @@ export class CreateStudByFileComponent {
   file: any;
 
   ngOnInit(): void {
-    if (this.auth.isLoggedIn()) {
+    if (this.auth.isAdminMod()) {
     }
   }
   createStdForm = new FormGroup({

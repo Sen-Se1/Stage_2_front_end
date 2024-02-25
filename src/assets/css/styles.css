@@ -12946,7 +12946,7 @@ body {
 }
 
 .sb-sidenav-dark {
-  background-color: #212529;
+  background-color: #00243C;
   color: rgba(255, 255, 255, 0.5);
 }
 
@@ -12979,7 +12979,7 @@ body {
 }
 
 .sb-sidenav-dark .sb-sidenav-footer {
-  background-color: #343a40;
+  background-color: #011726;
 }
 
 .sb-sidenav-light {
@@ -13186,7 +13186,7 @@ body {
 }
 
 .dash-alert {
-  border-color: brown;
+  border-color: #00243C;
 }
 
 .dash-txt {
@@ -13434,4 +13434,7 @@ body {
 .forStyle{
   display: flex;
   justify-content: flex-end;
+}
+.sb-bg{
+  background-color: #00243C;
 }

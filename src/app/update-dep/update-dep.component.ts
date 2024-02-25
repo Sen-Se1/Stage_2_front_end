@@ -20,7 +20,7 @@ export class UpdateDepComponent {
   }
   alertService: alert;
   ngOnInit() {
-    if (this.auth.isLoggedIn()) {
+    if (this.auth.isAdminMod()) {
       this.route.params.subscribe(params => {
         this.idDep = params['id']; // Retrieve the ID from the route parameters
         this.auth.getByIdDep(this.idDep).subscribe((res: any) => {

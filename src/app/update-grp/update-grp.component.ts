@@ -22,7 +22,7 @@ export class UpdateGrpComponent {
   }
   alertService: alert;
   ngOnInit() {
-    if (this.auth.isLoggedIn()) {
+    if (this.auth.isAdminMod()) {
       this.route.params.subscribe(params => {
         this.idGrp = params['id']; // Retrieve the ID from the route parameters
         this.auth.getByIdGrp(this.idGrp).subscribe((res: any) => {

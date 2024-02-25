@@ -18,7 +18,7 @@ export class CreateDepComponent {
     libelle: ''
   }
   ngOnInit(): void {
-    if (this.auth.isLoggedIn()) { return }
+    if (this.auth.isAdminMod()) { return }
   }
 
   createDepForm = new FormGroup({

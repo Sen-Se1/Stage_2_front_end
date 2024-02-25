@@ -20,7 +20,7 @@ export class CreateGrpComponent {
   }
   departments: any[] = [];
   ngOnInit(): void {
-    if (this.auth.isLoggedIn()) {
+    if (this.auth.isAdminMod()) {
       this.auth.getAllDep().subscribe((res: any) => {
         this.departments = res.data;
       }, err => {

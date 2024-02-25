@@ -19,7 +19,7 @@ export class CreateStgComponent {
     duree: ''
   }
   ngOnInit(): void {
-    if (this.auth.isLoggedIn()) { return }
+    if (this.auth.isAdminMod()) { return }
   }
 
   createStgForm = new FormGroup({
