@@ -10,9 +10,9 @@
             <div class="row">
                 <div class="col-xl-4" *ngFor="let result of results | keyvalue">
                     <div class="card text-black mb-4 dash-alert 3-item">
-                        <div class="card-body dash-txt">{{ result.key }}</div>
+                        <div class="card-body dash-txt">{{ auth.capitalizeFirstLetter(result.key) }}</div>
                         <div class="card-footer d-flex align-items-center justify-content-between">
-                            <p>You have {{ result.value }} {{ result.key }}s</p>
+                            <p>Vous avez {{ result.value }} {{ result.key }}s</p>
                         </div>
                     </div>
                 </div>

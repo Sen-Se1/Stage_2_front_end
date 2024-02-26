@@ -13427,9 +13427,17 @@ body {
 .forgotPassLink:active { 
   text-decoration: none; 
 }
+.startFlex{
+  display: flex;
+  justify-content: flex-start;
+}
+.endFlex{
+  display: flex;
+  justify-content: flex-end;
+  margin-top: -24px;
+}
 .forgotPassLink{
-  color: blue;
-  margin-left: 40%;
+  color: blue;  
 }
 .forStyle{
   display: flex;

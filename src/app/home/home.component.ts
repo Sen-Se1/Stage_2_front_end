@@ -8,7 +8,7 @@ import { alert } from '../utils/alert';
   styleUrl: './home.component.css'
 })
 export class HomeComponent {
-  constructor(private auth: AuthService) {
+  constructor(protected auth: AuthService) {
     this.alertService = new alert();
   }
   alertService: alert;
@@ -16,19 +16,19 @@ export class HomeComponent {
   ngOnInit() {
     if (this.auth.isLoggedIn()) {
       this.auth.getAllDep().subscribe((res: any) => {
-        this.results['Department'] = res.result;
+        this.results['département'] = res.result;
         this.auth.getAllGrp().subscribe((res: any) => {
-          this.results['Group'] = res.result;
+          this.results['groupe'] = res.result;
           this.auth.getAllStu().subscribe((res: any) => {
-            this.results['Student'] = res.result;
+            this.results['étudiant'] = res.result;
             this.auth.getAllStage().subscribe((res: any) => {
-              this.results['Stage'] = res.result;
+              this.results['stage'] = res.result;
               this.auth.getAllAss().subscribe((res: any) => {
-                this.results['Assignment'] = res.result;
+                this.results['affectation'] = res.result;
                 if (this.auth.userRole === 'ADMIN') {
                   this.auth.getAllModAdmin().subscribe((res: any) => {
-                    this.results['Admin'] = res.result.admins;
-                    this.results['Moderator'] = res.result.moderators;
+                    this.results['admin'] = res.result.admins;
+                    this.results['modérateur'] = res.result.moderators;
                   }, err => {
                     if (err.status === 0) {
                       return this.alertService.danger("System glitch", "We have a server-level bug that will be fixed shortly");

@@ -12,17 +12,17 @@
                 <a class="nav-link collapsed cur-point" data-bs-toggle="collapse" data-bs-target="#collapseDepartment"
                     aria-expanded="false" aria-controls="collapseDepartment">
                     <div class="sb-nav-link-icon"><i class="fas fa-building-user"></i></div>
-                    Department
+                    Département
                     <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                 </a>
                 <div class="collapse" id="collapseDepartment" aria-labelledby="headingTwo"
                     data-bs-parent="#sidenavAccordion">
                     <nav class="sb-sidenav-menu-nested accordion">
                         <a *ngIf="auth.userRole === 'ADMIN'" class="nav-link collapsed" routerLink="/create/department" routerLinkActive="active">
-                            Create
+                            Créer
                         </a>
                         <a class="nav-link collapsed" routerLink="/departments" routerLinkActive="active">
-                            Show All
+                            Afficher tout
                         </a>
                     </nav>
                 </div>
@@ -31,17 +31,17 @@
                 <a class="nav-link collapsed cur-point" data-bs-toggle="collapse" data-bs-target="#collapseGroup"
                     aria-expanded="false" aria-controls="collapseGroup">
                     <div class="sb-nav-link-icon"><i class="fas fa-users"></i></div>
-                    Group
+                    Groupe
                     <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                 </a>
                 <div class="collapse" id="collapseGroup" aria-labelledby="headingTwo"
                     data-bs-parent="#sidenavAccordion">
                     <nav class="sb-sidenav-menu-nested accordion">
                         <a *ngIf="auth.userRole === 'ADMIN'" class="nav-link collapsed" routerLink="/create/group" routerLinkActive="active">
-                            Create
+                            Créer
                         </a>
                         <a class="nav-link collapsed" routerLink="/groups" routerLinkActive="active">
-                            Show All
+                            Afficher tout
                         </a>
                     </nav>
                 </div>
@@ -50,20 +50,20 @@
                 <a class="nav-link collapsed cur-point" data-bs-toggle="collapse" data-bs-target="#collapseStudent"
                     aria-expanded="false" aria-controls="collapseStudent">
                     <div class="sb-nav-link-icon"><i class="fas fa-graduation-cap"></i></div>
-                    Student
+                    Étudiant
                     <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                 </a>
                 <div class="collapse" id="collapseStudent" aria-labelledby="headingTwo"
                     data-bs-parent="#sidenavAccordion">
                     <nav class="sb-sidenav-menu-nested accordion">
                         <a *ngIf="auth.userRole === 'ADMIN'" class="nav-link collapsed" routerLink="/create/student" routerLinkActive="active">
-                            Create
+                            Créer
                         </a>
                         <a *ngIf="auth.userRole === 'ADMIN'" class="nav-link collapsed" routerLink="/create/students/file" routerLinkActive="active">
-                            Create by file
+                            Créer par fichier
                         </a>
                         <a class="nav-link collapsed" routerLink="/students" routerLinkActive="active">
-                            Show All
+                            Afficher tout
                         </a>
                     </nav>
                 </div>
@@ -79,10 +79,10 @@
                     data-bs-parent="#sidenavAccordion">
                     <nav class="sb-sidenav-menu-nested accordion">
                         <a *ngIf="auth.userRole === 'ADMIN'" class="nav-link collapsed" routerLink="/create/stage" routerLinkActive="active">
-                            Create
+                            Créer
                         </a>
                         <a class="nav-link collapsed" routerLink="/stages" routerLinkActive="active">
-                            Show All
+                            Afficher tout
                         </a>
                     </nav>
                 </div>
@@ -91,17 +91,17 @@
                 <a class="nav-link collapsed cur-point" data-bs-toggle="collapse" data-bs-target="#collapseAssignment"
                     aria-expanded="false" aria-controls="collapseAssignment">
                     <div class="sb-nav-link-icon"><i class="fas fa-tasks"></i></div>
-                    Assignment
+                    Affectation
                     <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                 </a>
                 <div class="collapse" id="collapseAssignment" aria-labelledby="headingTwo"
                     data-bs-parent="#sidenavAccordion">
                     <nav class="sb-sidenav-menu-nested accordion">
                         <a class="nav-link collapsed" routerLink="/create/assignment" routerLinkActive="active">
-                            Create
+                            Créer
                         </a>
                         <a class="nav-link collapsed" routerLink="/assignments" routerLinkActive="active">
-                            Show All
+                            Afficher tout
                         </a>
                     </nav>
                 </div>
@@ -111,17 +111,17 @@
                     <a class="nav-link collapsed cur-point" data-bs-toggle="collapse"
                         data-bs-target="#collapseModerator" aria-expanded="false" aria-controls="collapseModerator">
                         <div class="sb-nav-link-icon"><i class="fa-solid fa-user-tie"></i></div>
-                        Moderator
+                        Modérateur
                         <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                     </a>
                     <div class="collapse" id="collapseModerator" aria-labelledby="headingTwo"
                         data-bs-parent="#sidenavAccordion">
                         <nav class="sb-sidenav-menu-nested accordion">
                             <a class="nav-link collapsed" routerLink="/add-admin-and-mod" routerLinkActive="active">
-                                Add Moderator
+                                Ajouter un modérateur
                             </a>
                             <a class="nav-link collapsed" routerLink="/admins-and-mods" routerLinkActive="active">
-                                Show All
+                                Afficher tout
                             </a>
                         </nav>
                     </div>
@@ -131,7 +131,7 @@
 
         <!-- who is logged in -->
         <div class="sb-sidenav-footer">
-            <div class="small">Logged in as:</div>
+            <div class="small">Connecté en tant que:</div>
             {{loggedIn}}
         </div>
     </nav>
