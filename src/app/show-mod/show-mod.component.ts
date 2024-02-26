@@ -24,7 +24,7 @@ export class ShowModComponent {
         this.mods = res.data.moderators;
       }, err => {
         if (err.status === 0) {
-          return this.alertService.danger("System glitch", "We have a server-level bug that will be fixed shortly");
+          return this.alertService.danger("Problème système", "Nous avons un bug au niveau du serveur qui sera corrigé prochainement.");
         }
         if (err.error.message) {
           return this.alertService.danger(err.error.status, err.error.message);
@@ -37,13 +37,13 @@ export class ShowModComponent {
 
   }
   dangerBox(id: any) {
-    this.dialogBoxService.danger('Are you sure ?', 'Do you want to delete this moderator ?').subscribe(resp => {
+    this.dialogBoxService.danger('Es-tu sûr ?', 'Voulez-vous supprimer ce modérateur ?').subscribe(resp => {
       if (resp.success) {
         this.auth.deleteModAdmin(id).subscribe((res: any) => {
           const index = this.mods.findIndex(mod => mod._id === id);
           // If the admin or moderator is found, remove it from the array
           if (index !== -1) {
-            this.alertService.success('Successfully', `The moderator has been deleted successfully for the owner of the username: ${this.mods[index].username}`)
+            this.alertService.success('Avec succès', `Le modérateur a été supprimé avec succès pour le propriétaire du nom d'utilisateur: ${this.mods[index].username}`)
             this.mods.splice(index, 1);
           }
           // Check if the current page is greater than the total number of pages
@@ -53,7 +53,7 @@ export class ShowModComponent {
           }
         }, err => {
           if (err.status === 0) {
-            return this.alertService.danger("System glitch", "We have a server-level bug that will be fixed shortly");
+            return this.alertService.danger("Problème système", "Nous avons un bug au niveau du serveur qui sera corrigé prochainement.");
           }
           if (err.error.message) {
             return this.alertService.danger(err.error.status, err.error.message);
