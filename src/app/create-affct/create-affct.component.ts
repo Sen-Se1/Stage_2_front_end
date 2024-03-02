@@ -128,7 +128,6 @@ export class CreateAffctComponent {
       }
       if (!found) {
         this.inputCinValue = new ObjectId().toHexString();
-        console.log(this.inputCinValue);
       }
     }
   }
@@ -165,7 +164,6 @@ export class CreateAffctComponent {
       dateD: this.data.dateD,
       dateF: this.data.dateF,
     }
-    console.log(sendData);
     this.auth.createAss(sendData).subscribe(
       (res: any) => {
         this.createAssForm.reset({

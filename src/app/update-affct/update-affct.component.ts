@@ -151,8 +151,6 @@ export class UpdateAffctComponent {
       dateD: this.data.dateD,
       dateF: this.data.dateF,
     }
-    console.log(sendData);
-
     this.auth.updateAss(this.idAffct, sendData).subscribe((res: any) => {
       this.alertService.success('Avec succès', `L'affectation a été mise à jour avec succès.`)
     }, err => {
