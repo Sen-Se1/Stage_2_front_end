@@ -33,10 +33,10 @@ export class LoginComponent {
   login() {
     this.auth.login(this.data).subscribe((res: any) => {
       this.auth.loginProcess(res);
-      this.alertService.success(` `, `Welcome back ${res.data.username}`)
+      this.alertService.success(` `, `Bon retour, ${res.data.username}`)
     }, err => {
       if (err.status === 0) {
-        return this.alertService.danger("System glitch", "We have a server-level bug that will be fixed shortly");
+        return this.alertService.danger("Problème système", "Nous avons un bug au niveau du serveur qui sera corrigé prochainement.");
       }
       if (err.error.message) {
         return this.alertService.danger(err.error.status, err.error.message);
