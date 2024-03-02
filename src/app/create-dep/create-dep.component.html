@@ -24,7 +24,7 @@
                         <div class="form-text text-danger alert-custom"
                             *ngIf="Code.invalid && (Code.touched || Code.dirty)">
                             <div *ngIf="Code.hasError('required')">Le code de département est obligatoire.</div>
-                            <div *ngIf="Code.hasError('minlength')">Le code de département doit comporter au moins 3 caractères long.</div>
+                            <div *ngIf="Code.hasError('minlength')">Le code de département doit comporter au moins 2 caractères long.</div>
                             <div *ngIf="Code.hasError('pattern')">Le code de département ne doit contenir que des lettres et des chiffres.</div>
                         </div>
                         <div class="input-group mb-3">
