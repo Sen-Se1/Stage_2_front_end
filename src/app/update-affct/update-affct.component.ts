@@ -78,8 +78,19 @@ export class UpdateAffctComponent {
       });
     }
   }
+  onInputChange(event: any) {
+    // this.inputCinValue = event.target.value;
+    // if (this.inputCinValue.length === 8) {
+    //   for (const student of this.students) {
+    //     if (student.cin === this.inputCinValue) {
+    //       this.inputCinValue = student._id;
+    //       break;
+    //     }
+    //   }
+    // }
+  }
   updateAssForm = new FormGroup({
-    cin: new FormControl('', [Validators.required, this.AssignmentValidator]),
+    cin: new FormControl('', [Validators.required, Validators.pattern(/^\d{8}$/),]),
     codeS: new FormControl('', [Validators.required, this.AssignmentValidator]),
     lieuS: new FormControl('', [Validators.required]),
     codeRap: new FormControl('', [Validators.required, Validators.minLength(3), Validators.pattern(/^[a-zA-Z0-9]+$/)]),

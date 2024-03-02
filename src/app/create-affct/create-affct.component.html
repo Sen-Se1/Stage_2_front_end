@@ -22,14 +22,16 @@
                 <div class="card-body justify-content-center">
                     <form class="form-inline" [formGroup]="createAssForm" autocomplete="off">
                         <div class="input-group mb-3">
-                            <label class="input-group-text" for="cin">Cin :</label>
-                            <input [(ngModel)]="data.cin" formControlName="cin" name="cin" class="form-control"
-                                id="codeInput" type="text" placeholder="Cin..." />
+                            <label class="input-group-text" for="inputCin">Cin :</label>
+                            <input (input)="onInputChange($event)" [(ngModel)]="data.cin" formControlName="cin" class="form-control" list="inputCins" name="inputCin" id="inputCin" placeholder="Cin...">
+                            <datalist id="inputCins">
+                                <option *ngFor="let student of students" [value]="student.cin">
+                            </datalist>
                         </div>
                         <div class="form-text text-danger alert-custom"
                             *ngIf="Cin.invalid && (Cin.touched || Cin.dirty)">
                             <div *ngIf="Cin.hasError('required')">CIN est obligatoire.</div>
-                            <div *ngIf="Cin.hasError('invalidCodeG')">Veuillez sélectionner un CIN valide.</div>
+                            <div *ngIf="Cin.hasError('pattern')">Le format est invalide. CIN n'accepte que 8 chiffres.</div>
                         </div>
                         <div class="input-group mb-3">
                             <label class="input-group-text" for="codeInput">Code de stage :</label>

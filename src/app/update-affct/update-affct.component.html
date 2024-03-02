@@ -22,18 +22,16 @@
                 <div class="card-body justify-content-center">
                     <form class="form-inline" [formGroup]="updateAssForm" autocomplete="off">
                         <div class="input-group mb-3">
-                            <label class="input-group-text" for="codeInput">Cin :&nbsp;&nbsp;&nbsp;</label>
-                            <select [(ngModel)]="data.cin" formControlName="cin" name="cin"
-                                class="form-select cur-point" aria-label="Default select example">
-                                <option [ngValue]="'default'" selected>Select a CIN</option>
-                                <option *ngFor="let student of students" [value]="student._id">{{ student.cin }}
-                                </option>
-                            </select>
+                            <label class="input-group-text" for="inputCin">Cin :</label>
+                            <input (input)="onInputChange($event)" [(ngModel)]="data.cin" formControlName="cin" class="form-control" list="inputCins" name="inputCin" id="inputCin" placeholder="Cin...">
+                            <datalist id="inputCins">
+                                <option *ngFor="let student of students" [value]="student.cin">
+                            </datalist>
                         </div>
                         <div class="form-text text-danger alert-custom"
                             *ngIf="Cin.invalid && (Cin.touched || Cin.dirty)">
-                            <div *ngIf="Cin.hasError('required')">Cin is required.</div>
-                            <div *ngIf="Cin.hasError('invalidCodeG')">Please select a valid cin.</div>
+                            <div *ngIf="Cin.hasError('required')">CIN est obligatoire.</div>
+                            <div *ngIf="Cin.hasError('pattern')">Le format est invalide. CIN n'accepte que 8 chiffres.</div>
                         </div>
                         <div class="input-group mb-3">
                             <label class="input-group-text" for="codeInput">Code de stage :</label>

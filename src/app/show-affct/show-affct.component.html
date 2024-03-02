@@ -41,6 +41,20 @@
                                             {{ sortTableService.reverse ? '▼' : '▲' }}
                                         </span>
                                     </th>
+                                    <th (click)="sortTable('cin.nom')"
+                                        class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                        Nom
+                                        <span class="sort-indicator" *ngIf="sortTableService.sortKey === 'cin.nom'">
+                                            {{ sortTableService.reverse ? '▼' : '▲' }}
+                                        </span>
+                                    </th>
+                                    <th (click)="sortTable('cin.prenom')"
+                                        class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                        Prenom
+                                        <span class="sort-indicator" *ngIf="sortTableService.sortKey === 'cin.prenom'">
+                                            {{ sortTableService.reverse ? '▼' : '▲' }}
+                                        </span>
+                                    </th>
                                     <th (click)="sortTable('codeS.codeS')"
                                         class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
                                         Code de stage
@@ -90,6 +104,20 @@
                                             <div class="d-flex px-2 py-1">
                                                 <p class="text-xs text-secondary mb-0">
                                                     {{ assignment.cin.cin }}
+                                                </p>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="d-flex px-2 py-1">
+                                                <p class="text-xs text-secondary mb-0">
+                                                    {{ assignment.cin.nom }}
+                                                </p>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="d-flex px-2 py-1">
+                                                <p class="text-xs text-secondary mb-0">
+                                                    {{ assignment.cin.prenom }}
                                                 </p>
                                             </div>
                                         </td>

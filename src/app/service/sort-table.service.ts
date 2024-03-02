@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class SortTableService {
   public sortKey: string = '';
@@ -22,7 +22,9 @@ export class SortTableService {
       const valueB = this.resolveNestedProperty(b, key);
 
       if (this.isDate(valueA) && this.isDate(valueB)) {
-        return order * (new Date(valueA).getTime() - new Date(valueB).getTime());
+        return (
+          order * (new Date(valueA).getTime() - new Date(valueB).getTime())
+        );
       } else if (typeof valueA === 'string' && typeof valueB === 'string') {
         return order * valueA.localeCompare(valueB);
       } else {
@@ -37,40 +39,54 @@ export class SortTableService {
     return value instanceof Date || !isNaN(Date.parse(value));
   }
   isModMatch(mod: any, searchValue: string): boolean {
-    return mod._id.toLowerCase().includes(searchValue.toLowerCase()) ||
+    return (
+      mod._id.toLowerCase().includes(searchValue.toLowerCase()) ||
       mod.email.toLowerCase().includes(searchValue.toLowerCase()) ||
       mod.role.toLowerCase().includes(searchValue.toLowerCase()) ||
-      mod.username.toLowerCase().includes(searchValue.toLowerCase());
+      mod.username.toLowerCase().includes(searchValue.toLowerCase())
+    );
   }
   isDepartmentMatch(department: any, searchValue: string): boolean {
-    return department.codeD.toLowerCase().includes(searchValue.toLowerCase()) ||
-      department.libelle.toLowerCase().includes(searchValue.toLowerCase());
+    return (
+      department.codeD.toLowerCase().includes(searchValue.toLowerCase()) ||
+      department.libelle.toLowerCase().includes(searchValue.toLowerCase())
+    );
   }
   isGroupMatch(group: any, searchValue: string): boolean {
-    return group.codeG.toLowerCase().includes(searchValue.toLowerCase()) ||
+    return (
+      group.codeG.toLowerCase().includes(searchValue.toLowerCase()) ||
       group.libelle.toLowerCase().includes(searchValue.toLowerCase()) ||
-      group.codeD.libelle.toLowerCase().includes(searchValue.toLowerCase());
+      group.codeD.libelle.toLowerCase().includes(searchValue.toLowerCase())
+    );
   }
   isStudentMatch(student: any, searchValue: string): boolean {
-    return student.cin.toLowerCase().includes(searchValue.toLowerCase()) ||
+    return (
+      student.cin.toLowerCase().includes(searchValue.toLowerCase()) ||
       student.nom.toLowerCase().includes(searchValue.toLowerCase()) ||
       student.prenom.toLowerCase().includes(searchValue.toLowerCase()) ||
       student.email.toLowerCase().includes(searchValue.toLowerCase()) ||
       student.tel.toLowerCase().includes(searchValue.toLowerCase()) ||
-      student.codeG.libelle.toLowerCase().includes(searchValue.toLowerCase());
+      student.codeG.libelle.toLowerCase().includes(searchValue.toLowerCase())
+    );
   }
   isStageMatch(stage: any, searchValue: string): boolean {
-    return stage.codeS.toLowerCase().includes(searchValue.toLowerCase()) ||
+    return (
+      stage.codeS.toLowerCase().includes(searchValue.toLowerCase()) ||
       stage.type.toLowerCase().includes(searchValue.toLowerCase()) ||
-      stage.duree.toString().toLowerCase().includes(searchValue.toLowerCase());
+      stage.duree.toString().toLowerCase().includes(searchValue.toLowerCase())
+    );
   }
   isAssignmentMatch(assignment: any, searchValue: string): boolean {
-    return assignment.cin.cin.toLowerCase().includes(searchValue.toLowerCase()) ||
+    return (
+      assignment.cin.cin.toLowerCase().includes(searchValue.toLowerCase()) ||
+      assignment.cin.nom.toLowerCase().includes(searchValue.toLowerCase()) ||
+      assignment.cin.prenom.toLowerCase().includes(searchValue.toLowerCase()) ||
       assignment.codeS.codeS.toLowerCase().includes(searchValue.toLowerCase()) ||
       assignment.lieuS.toLowerCase().includes(searchValue.toLowerCase()) ||
       assignment.codeRap.toLowerCase().includes(searchValue.toLowerCase()) ||
       assignment.dateD.toLowerCase().includes(searchValue.toLowerCase()) ||
-      assignment.dateF.toLowerCase().includes(searchValue.toLowerCase());
+      assignment.dateF.toLowerCase().includes(searchValue.toLowerCase())
+    );
   }
   paginate(array: any[]): any[] {
     const startIndex = (this.currentPage - 1) * this.itemsPerPage;
