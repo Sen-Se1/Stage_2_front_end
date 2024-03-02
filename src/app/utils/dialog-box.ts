@@ -20,7 +20,7 @@ export class dialogBox {
             buttonPosition: 'center', // optional 
         });
 
-        newConfirmBox.setButtonLabels('YES', 'NO');
+        newConfirmBox.setButtonLabels('OUI', 'NON');
 
         // Simply open the popup and observe button click
         return newConfirmBox.openConfirmBox$()
@@ -42,7 +42,7 @@ export class dialogBox {
             buttonPosition: 'center', // optional 
         });
 
-        newConfirmBox.setButtonLabels('YES', 'NO');
+        newConfirmBox.setButtonLabels('OUI', 'NON');
 
         // Simply open the popup and observe button click
         return newConfirmBox.openConfirmBox$()
@@ -63,7 +63,7 @@ export class dialogBox {
             buttonPosition: 'center', // optional 
         });
 
-        newConfirmBox.setButtonLabels('YES', 'NO');
+        newConfirmBox.setButtonLabels('OUI', 'NON');
 
         // Simply open the popup and observe button click
         return newConfirmBox.openConfirmBox$()
@@ -84,7 +84,7 @@ export class dialogBox {
             buttonPosition: 'center', // optional 
         });
 
-        newConfirmBox.setButtonLabels('YES', 'NO');
+        newConfirmBox.setButtonLabels('OUI', 'NON');
 
         // Simply open the popup and observe button click
         return newConfirmBox.openConfirmBox$()
@@ -105,7 +105,7 @@ export class dialogBox {
             buttonPosition: 'center', // optional 
         });
 
-        newConfirmBox.setButtonLabels('YES', 'NO');
+        newConfirmBox.setButtonLabels('OUI', 'NON');
 
         // Simply open the popup and observe button click
         return newConfirmBox.openConfirmBox$()
