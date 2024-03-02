@@ -90,7 +90,7 @@ export class UpdateAffctComponent {
           this.inputCinValue = student._id;
           break;
         } 
-        this.inputCinValue = new ObjectId();
+        this.inputCinValue = new ObjectId().toHexString();
       }
     }
   }
