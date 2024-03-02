@@ -50,10 +50,10 @@ export class UpdatePwdComponent {
         password: '',
         passwordConfirm: '',
       });
-      this.alertService.success('Successfully', `Your password has been updated successfully`)
+      this.alertService.success('Avec succès', `Votre mot de passe a été mis à jour avec succès.`)
     }, err => {
       if (err.status === 0) {
-        return this.alertService.danger("System glitch", "We have a server-level bug that will be fixed shortly");
+        return this.alertService.danger("Problème système", "Nous avons un bug au niveau du serveur qui sera corrigé prochainement.");
       }
       if (err.error.message) {
         return this.alertService.danger(err.error.status, err.error.message);

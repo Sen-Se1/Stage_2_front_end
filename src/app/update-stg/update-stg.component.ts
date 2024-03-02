@@ -34,7 +34,7 @@ export class UpdateStgComponent {
           }
         }, err => {
           if (err.status === 0) {
-            return this.alertService.danger("System glitch", "We have a server-level bug that will be fixed shortly");
+            return this.alertService.danger("Problème système", "Nous avons un bug au niveau du serveur qui sera corrigé prochainement.");
           }
           if (err.error.message) {
             return this.alertService.danger(err.error.status, err.error.message);
@@ -71,10 +71,10 @@ export class UpdateStgComponent {
   }
   update() {
     this.auth.updateStage(this.data.id, this.data).subscribe((res: any) => {
-      this.alertService.success('Successfully', `The stage has been updated successfully for the owner of the code: ${res.data.codeS}`)
+      this.alertService.success('Avec succès', `Le stage a été mis à jour avec succès pour le propriétaire du code: ${res.data.codeS}`)
     }, err => {
       if (err.status === 0) {
-        return this.alertService.danger("System glitch", "We have a server-level bug that will be fixed shortly");
+        return this.alertService.danger("Problème système", "Nous avons un bug au niveau du serveur qui sera corrigé prochainement.");
       }
       if (err.error.message) {
         return this.alertService.danger(err.error.status, err.error.message);
