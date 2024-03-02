@@ -31,7 +31,7 @@ export class HomeComponent {
                     this.results['modérateur'] = res.result.moderators;
                   }, err => {
                     if (err.status === 0) {
-                      return this.alertService.danger("System glitch", "We have a server-level bug that will be fixed shortly");
+                      return this.alertService.danger("Problème système", "Nous avons un bug au niveau du serveur qui sera corrigé prochainement.");
                     }
                     if (err.error.message) {
                       return this.alertService.danger(err.error.status, err.error.message);
@@ -43,7 +43,7 @@ export class HomeComponent {
                 }
               }, err => {
                 if (err.status === 0) {
-                  return this.alertService.danger("System glitch", "We have a server-level bug that will be fixed shortly");
+                  return this.alertService.danger("Problème système", "Nous avons un bug au niveau du serveur qui sera corrigé prochainement.");
                 }
                 if (err.error.message) {
                   return this.alertService.danger(err.error.status, err.error.message);
@@ -54,7 +54,7 @@ export class HomeComponent {
               })
             }, err => {
               if (err.status === 0) {
-                return this.alertService.danger("System glitch", "We have a server-level bug that will be fixed shortly");
+                return this.alertService.danger("Problème système", "Nous avons un bug au niveau du serveur qui sera corrigé prochainement.");
               }
               if (err.error.message) {
                 return this.alertService.danger(err.error.status, err.error.message);
@@ -65,7 +65,7 @@ export class HomeComponent {
             })
           }, err => {
             if (err.status === 0) {
-              return this.alertService.danger("System glitch", "We have a server-level bug that will be fixed shortly");
+              return this.alertService.danger("Problème système", "Nous avons un bug au niveau du serveur qui sera corrigé prochainement.");
             }
             if (err.error.message) {
               return this.alertService.danger(err.error.status, err.error.message);
@@ -76,7 +76,7 @@ export class HomeComponent {
           })
         }, err => {
           if (err.status === 0) {
-            return this.alertService.danger("System glitch", "We have a server-level bug that will be fixed shortly");
+            return this.alertService.danger("Problème système", "Nous avons un bug au niveau du serveur qui sera corrigé prochainement.");
           }
           if (err.error.message) {
             return this.alertService.danger(err.error.status, err.error.message);
@@ -87,7 +87,7 @@ export class HomeComponent {
         });
       }, err => {
         if (err.status === 0) {
-          return this.alertService.danger("System glitch", "We have a server-level bug that will be fixed shortly");
+          return this.alertService.danger("Problème système", "Nous avons un bug au niveau du serveur qui sera corrigé prochainement.");
         }
         if (err.error.message) {
           return this.alertService.danger(err.error.status, err.error.message);

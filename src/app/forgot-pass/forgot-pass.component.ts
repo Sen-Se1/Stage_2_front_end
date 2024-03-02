@@ -27,13 +27,13 @@ export class ForgotPassComponent {
 
   send() {
     this.auth.forgotPass(this.data).subscribe((res: any) => {      
-      this.alertService.success(`Successfully`, `${res.message}`)
+      this.alertService.success(`Avec succès`, `${res.message}`)
       this.forgotForm.reset({
         email: ''
       });
     }, err => {
       if (err.status === 0) {
-        return this.alertService.danger("System glitch", "We have a server-level bug that will be fixed shortly");
+        return this.alertService.danger("Problème système", "Nous avons un bug au niveau du serveur qui sera corrigé prochainement.");
       }
       if (err.error.message) {
         return this.alertService.danger(err.error.status, err.error.message);

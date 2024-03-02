@@ -32,7 +32,7 @@ export class HeaderComponent implements OnInit {
     }
   }
   logout() {
-    this.alertService.success(' ', `See you again.......`)
+    this.alertService.success(' ', `à la prochaine .......`)
     this.auth.logout();
   }
 }
