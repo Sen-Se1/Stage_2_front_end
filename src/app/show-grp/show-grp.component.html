@@ -51,7 +51,7 @@
                                             {{ sortTableService.reverse ? '▼' : '▲' }}
                                         </span>
                                     </th>
-                                    <th colspan="2"
+                                    <th *ngIf="auth.userRole === 'ADMIN'" colspan="2"
                                         class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
                                         Action
                                     </th>
@@ -81,13 +81,13 @@
                                                 </p>
                                             </div>
                                         </td>
-                                        <td class="align-middle text-center text-sm">
+                                        <td *ngIf="auth.userRole === 'ADMIN'" class="align-middle text-center text-sm">
                                             <button class="btn btn-block btn-danger waves-effect"
                                                 (click)="dangerBox(group._id)">
                                                 Supprimer
                                             </button>
                                         </td>
-                                        <td class="align-middle text-center text-sm">
+                                        <td *ngIf="auth.userRole === 'ADMIN'" class="align-middle text-center text-sm">
                                             <button class="btn btn-block btn-success waves-effect"
                                                 (click)="update(group._id)">
                                                 Modifier

@@ -13,7 +13,7 @@ export class ShowGrpComponent {
   groups: any[] = [];
   searchValue: string = '';
   dialogBoxService: dialogBox;
-  constructor(private auth: AuthService, protected sortTableService: SortTableService) {
+  constructor(protected auth: AuthService, protected sortTableService: SortTableService) {
     this.dialogBoxService = new dialogBox();
     this.alertService = new alert();
   }
