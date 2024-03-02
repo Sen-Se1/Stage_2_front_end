@@ -37,7 +37,7 @@
                             <div *ngIf="Nom.hasError('pattern')">Le format de nom est invalide.</div>
                         </div>
                         <div class="input-group mb-3">
-                            <label class="input-group-text" for="codeInput">First Name :</label>
+                            <label class="input-group-text" for="codeInput">Prenom :</label>
                             <input [(ngModel)]="data.prenom" formControlName="prenom" name="prenom" class="form-control"
                                 id="codeInput" type="text" placeholder="Prenom de l'étudiant..." />
                         </div>
@@ -57,7 +57,7 @@
                             <div *ngIf="Email.hasError('email')">Adresse e-mail est invalide.</div>
                         </div>
                         <div class="input-group mb-3">
-                            <label class="input-group-text" for="labelInput">Numéro de téléphone :</label>
+                            <label class="input-group-text" for="labelInput"> :</label>
                             <input [(ngModel)]="data.tel" formControlName="tel" name="tel" class="form-control"
                                 id="labelInput" type="text" placeholder="Numéro de téléphone..." />
                         </div>

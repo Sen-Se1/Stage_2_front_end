@@ -4,23 +4,23 @@
     <main>
         <div class="container-fluid px-4">
             <h1 class="mt-4">
-                Student
+                Étudiant
             </h1>
             <ol class="breadcrumb mb-4">
                 <li class="breadcrumb-item active">
-                    Show All Students
+                    Afficher tous les étudiants
                 </li>
             </ol>
             <div class="card mb-4">
                 <div class="card-header d-flex justify-content-between align-items-center">
                     <div>
                         <i class="fas fa-graduation-cap me-1"></i>
-                        Students
+                        Étudiants
                     </div>
                     <form class="form-inline">
                         <div class="input-group">
                             <input class="form-control" type="text" [(ngModel)]="searchValue" name="searchValue"
-                                placeholder="Search for..." />
+                                placeholder="Rechercher ..." />
                         </div>
                     </form>
                 </div>
@@ -38,35 +38,35 @@
                                     </th>
                                     <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2"
                                         (click)="sortTable('nom')">
-                                        Last Name
+                                        Nom
                                         <span class="sort-indicator" *ngIf="sortTableService.sortKey === 'nom'">
                                             {{ sortTableService.reverse ? '▼' : '▲' }}
                                         </span>
                                     </th>
                                     <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7"
                                         (click)="sortTable('prenom')">
-                                        First Name
+                                        Prenom
                                         <span class="sort-indicator" *ngIf="sortTableService.sortKey === 'prenom'">
                                             {{ sortTableService.reverse ? '▼' : '▲' }}
                                         </span>
                                     </th>
                                     <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2"
                                         (click)="sortTable('email')">
-                                        Email
+                                        Adresse e-mail
                                         <span class="sort-indicator" *ngIf="sortTableService.sortKey === 'email'">
                                             {{ sortTableService.reverse ? '▼' : '▲' }}
                                         </span>
                                     </th>
                                     <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7"
                                         (click)="sortTable('tel')">
-                                        Phone
+                                        Numéro de téléphone
                                         <span class="sort-indicator" *ngIf="sortTableService.sortKey === 'tel'">
                                             {{ sortTableService.reverse ? '▼' : '▲' }}
                                         </span>
                                     </th>
                                     <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2"
                                         (click)="sortTable('codeG.libelle')">
-                                        Group
+                                        Groupe
                                         <span class="sort-indicator"
                                             *ngIf="sortTableService.sortKey === 'codeG.libelle'">
                                             {{ sortTableService.reverse ? '▼' : '▲' }}
@@ -127,13 +127,13 @@
                                         <td class="align-middle text-center text-sm">
                                             <button class="btn btn-block btn-danger waves-effect"
                                                 (click)="dangerBox(student._id)">
-                                                Delete
+                                                Supprimer
                                             </button>
                                         </td>
                                         <td class="align-middle text-center text-sm">
                                             <button class="btn btn-block btn-success waves-effect"
                                                 (click)="update(student._id)">
-                                                Edit
+                                                Modifier
                                             </button>
                                         </td>
                                     </tr>

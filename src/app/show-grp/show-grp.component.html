@@ -4,23 +4,23 @@
     <main>
         <div class="container-fluid px-4">
             <h1 class="mt-4">
-                Group
+                Groupe
             </h1>
             <ol class="breadcrumb mb-4">
                 <li class="breadcrumb-item active">
-                    Show All Groups
+                    Afficher tous les groupes
                 </li>
             </ol>
             <div class="card mb-4">
                 <div class="card-header d-flex justify-content-between align-items-center">
                     <div>
                         <i class="fas fa-users me-1"></i>
-                        Groups
+                        Groupes
                     </div>
                     <form class="form-inline">
                         <div class="input-group">
                             <input class="form-control" type="text" [(ngModel)]="searchValue" name="searchValue"
-                                placeholder="Search for..." />
+                                placeholder="Rechercher ..." />
                         </div>
                     </form>
                 </div>
@@ -38,14 +38,14 @@
                                     </th>
                                     <th (click)="sortTable('libelle')"
                                         class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
-                                        Label
+                                        Libelle
                                         <span class="sort-indicator" *ngIf="sortTableService.sortKey === 'libelle'">
                                             {{ sortTableService.reverse ? '▼' : '▲' }}
                                         </span>
                                     </th>
                                     <th (click)="sortTable('codeD.libelle')"
                                         class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
-                                        Department
+                                        Département
                                         <span class="sort-indicator"
                                             *ngIf="sortTableService.sortKey === 'codeD.libelle'">
                                             {{ sortTableService.reverse ? '▼' : '▲' }}
@@ -84,13 +84,13 @@
                                         <td class="align-middle text-center text-sm">
                                             <button class="btn btn-block btn-danger waves-effect"
                                                 (click)="dangerBox(group._id)">
-                                                Delete
+                                                Supprimer
                                             </button>
                                         </td>
                                         <td class="align-middle text-center text-sm">
                                             <button class="btn btn-block btn-success waves-effect"
                                                 (click)="update(group._id)">
-                                                Edit
+                                                Modifier
                                             </button>
                                         </td>
                                     </tr>

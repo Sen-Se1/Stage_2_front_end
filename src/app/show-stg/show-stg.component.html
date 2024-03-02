@@ -8,7 +8,7 @@
             </h1>
             <ol class="breadcrumb mb-4">
                 <li class="breadcrumb-item active">
-                    Show All Stages
+                    Afficher tous les stages
                 </li>
             </ol>
             <div class="card mb-4">
@@ -20,7 +20,7 @@
                     <form class="form-inline">
                         <div class="input-group">
                             <input class="form-control" type="text" [(ngModel)]="searchValue" name="searchValue"
-                                placeholder="Search for..." />
+                                placeholder="Rechercher ..." />
                         </div>
                     </form>
                 </div>
@@ -45,7 +45,7 @@
                                     </th>
                                     <th (click)="sortTable('duree')"
                                         class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
-                                        Duration
+                                        Durée
                                         <span class="sort-indicator" *ngIf="sortTableService.sortKey === 'duree'">
                                             {{ sortTableService.reverse ? '▼' : '▲' }}
                                         </span>
@@ -83,13 +83,13 @@
                                         <td class="align-middle text-center text-sm">
                                             <button class="btn btn-block btn-danger waves-effect"
                                                 (click)="dangerBox(stage._id)">
-                                                Delete
+                                                Supprimer
                                             </button>
                                         </td>
                                         <td class="align-middle text-center text-sm">
                                             <button class="btn btn-block btn-success waves-effect"
                                                 (click)="update(stage._id)">
-                                                Edit
+                                                Modifier
                                             </button>
                                         </td>
                                     </tr>
