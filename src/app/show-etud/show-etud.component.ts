@@ -37,7 +37,7 @@ export class ShowEtudComponent {
 
   }
   dangerBox(id: any) {
-    this.dialogBoxService.danger('Es-tu sûr ?', 'Si cet élève est supprimé, tous les devoirs qui lui sont associés seront supprimés.').subscribe(resp => {
+    this.dialogBoxService.danger('Es-tu sûr ?', 'Si cet étudiant est supprimé, tous les devoirs qui lui sont associés seront supprimés.').subscribe(resp => {
       if (resp.success) {
         this.auth.deleteStu(id).subscribe((res: any) => {
           const index = this.students.findIndex(student => student._id === id);
