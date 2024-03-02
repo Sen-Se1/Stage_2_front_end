@@ -19,7 +19,7 @@ export class UpdateAffctComponent {
     cin: '',
     codeS: 'default',
     lieuS: '',
-    codeRap: '',
+    // codeRap: '',
     dateD: '',
     dateF: '',
   }
@@ -38,7 +38,7 @@ export class UpdateAffctComponent {
           cin: res.data.cin.cin,
           codeS: res.data.codeS._id,
           lieuS: res.data.lieuS,
-          codeRap: res.data.codeRap,
+          // codeRap: res.data.codeRap,
           dateD: new Date(res.data.dateD).toISOString().split('T')[0],
           dateF: new Date(res.data.dateF).toISOString().split('T')[0],
         }
@@ -103,7 +103,7 @@ export class UpdateAffctComponent {
     cin: new FormControl('', [Validators.required, Validators.pattern(/^\d{8}$/),]),
     codeS: new FormControl('', [Validators.required, this.AssignmentValidator]),
     lieuS: new FormControl('', [Validators.required]),
-    codeRap: new FormControl('', [Validators.required, Validators.minLength(3), Validators.pattern(/^[a-zA-Z0-9]+$/)]),
+    // codeRap: new FormControl('', [Validators.required, Validators.minLength(3), Validators.pattern(/^[a-zA-Z0-9]+$/)]),
     dateD: new FormControl('', [Validators.required, this.startDateValidator]),
     dateF: new FormControl('', [Validators.required, this.startDateValidator])
   });
@@ -134,9 +134,9 @@ export class UpdateAffctComponent {
   get Location(): FormControl {
     return this.updateAssForm.get('lieuS') as FormControl;
   }
-  get CodeRap(): FormControl {
-    return this.updateAssForm.get('codeRap') as FormControl;
-  }
+  // get CodeRap(): FormControl {
+  //   return this.updateAssForm.get('codeRap') as FormControl;
+  // }
 
   get DateD(): FormControl {
     return this.updateAssForm.get('dateD') as FormControl;
@@ -151,7 +151,7 @@ export class UpdateAffctComponent {
       cin: this.inputCinValue,
       codeS: this.data.codeS,
       lieuS: this.data.lieuS,
-      codeRap: this.data.codeRap,
+      // codeRap: this.data.codeRap,
       dateD: this.data.dateD,
       dateF: this.data.dateF,
     }
