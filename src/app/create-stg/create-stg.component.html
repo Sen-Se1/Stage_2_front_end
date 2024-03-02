@@ -5,7 +5,7 @@
         <div class="container-fluid px-4">
             <h1 class="mt-4">Stage</h1>
             <ol class="breadcrumb mb-4">
-                <li class="breadcrumb-item active">Create Stage</li>
+                <li class="breadcrumb-item active">Créer un stage</li>
             </ol>
             <div class="card mb-4">
                 <div class="card-header d-flex justify-content-between align-items-center">
@@ -19,45 +19,41 @@
                         <div class="input-group mb-3">
                             <label class="input-group-text" for="codeInput">Code :</label>
                             <input [(ngModel)]="data.codeS" formControlName="code" name="codeS" class="form-control"
-                                id="codeInput" type="text" placeholder="Stage Code..." />
+                                id="codeInput" type="text" placeholder="Le code de stage..." />
                         </div>
                         <div class="form-text text-danger alert-custom"
                             *ngIf="Code.invalid && (Code.touched || Code.dirty)">
-                            <div *ngIf="Code.hasError('required')">Stage code is required.</div>
-                            <div *ngIf="Code.hasError('minlength')">Stage code should be at least 3 characters long.
-                            </div>
-                            <div *ngIf="Code.hasError('pattern')">Stage code should only contain letters and numbers.
-                            </div>
+                            <div *ngIf="Code.hasError('required')">Le code de stage est obligatoire.</div>
+                            <div *ngIf="Code.hasError('minlength')">Le code de stage doit comporter au moins 3 caractères long.</div>
+                            <div *ngIf="Code.hasError('pattern')">Le code de stage ne doit contenir que des lettres et des chiffres.</div>
                         </div>
                         <div class="input-group mb-3">
                             <label class="input-group-text" for="codeInput">Type :&nbsp;&nbsp;&nbsp;</label>
                             <select [(ngModel)]="data.type" formControlName="type" name="type"
                                 class="form-select cur-point" aria-label="Default select example">
-                                <option [ngValue]="'default'" selected>Select a type</option>
-                                <option [ngValue]="'Stage d\'initiation'" selected>Introductory course</option>
-                                <option [ngValue]="'Stage de perfectionnement'" selected>Course development</option>
-                                <option [ngValue]="'Stage de fin d\'etude'" selected>End of study internship</option>
+                                <option [ngValue]="'default'" selected>Sélectionnez un type</option>
+                                <option [ngValue]="'Stage d\'initiation'" selected>Stage d'initiation</option>
+                                <option [ngValue]="'Stage de perfectionnement'" selected>Stage de perfectionnement</option>
+                                <option [ngValue]="'Stage de fin d\'etude'" selected>Stage de fin d'etude</option>
                             </select>
                         </div>
                         <div class="form-text text-danger alert-custom"
                             *ngIf="Type.invalid && (Type.touched || Type.dirty)">
-                            <div *ngIf="Type.hasError('required')">Stage type is required.</div>
-                            <div *ngIf="Type.hasError('invalidType')">Please select a valid type.</div>
+                            <div *ngIf="Type.hasError('required')">Le type de stage est obligatoire.</div>
+                            <div *ngIf="Type.hasError('invalidType')">Veuillez sélectionner un type valide.</div>
                         </div>
                         <div class="input-group mb-3">
-                            <label class="input-group-text" for="labelInput">Duration :</label>
+                            <label class="input-group-text" for="labelInput">Durée :</label>
                             <input [(ngModel)]="data.duree" formControlName="duration" name="duree" class="form-control"
-                                id="labelInput" type="number" placeholder="Stage Duration..." />
+                                id="labelInput" type="number" placeholder="La durée de stage..." />
                         </div>
                         <div class="form-text text-danger alert-custom"
                             *ngIf="Duration.invalid && (Duration.touched || Duration.dirty)">
-                            <div *ngIf="Duration.hasError('required')">Duration is required.</div>
-                            <div *ngIf="Duration.hasError('pattern')">Invalid stage duration format (should be a
-                                positive number).</div>
+                            <div *ngIf="Duration.hasError('required')">La durée de stage est obligatoire.</div>
+                            <div *ngIf="Duration.hasError('pattern')">Le format de durée d'étape non valide (doit être un nombre positif).</div>
                         </div>
                         <div class="input-group mb-3">
-                            <button class="btn btn-success" [disabled]="createStgForm.invalid" (click)="create()">Create
-                                Stage</button>
+                            <button class="btn btn-success" [disabled]="createStgForm.invalid" (click)="create()">Créer un stage</button>
                         </div>
                     </form>
                 </div>

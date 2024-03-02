@@ -3,26 +3,25 @@
 <div id="layoutSidenav_content">
     <main>
         <div class="container-fluid px-4">
-            <h1 class="mt-4">Student</h1>
+            <h1 class="mt-4">Étudiant</h1>
             <ol class="breadcrumb mb-4">
-                <li class="breadcrumb-item active">Create Student By File</li>
+                <li class="breadcrumb-item active">Créer un étudiant par fichier</li>
             </ol>
             <div class="card mb-4">
                 <div class="card-header d-flex justify-content-between align-items-center">
                     <div>
                         <i class="fas fa-graduation-cap me-1"></i>
-                        Student
+                        Étudiant
                     </div>
                 </div>
                 <div class="card-body justify-content-center">
                     <form class="form-inline" [formGroup]="createStdForm" autocomplete="off">
                         <div class="input-group mb-3">
                             <input formControlName="file" name="file" class="form-control"
-                                id="file" type="file" (change)="getFile($event)"  />
+                                id="file" type="file" (change)="getFile($event)" />
                         </div>
                         <div class="input-group mb-3">
-                            <button class="btn btn-success" [disabled]="createStdForm.invalid" (click)="create()">Create
-                                Student</button>
+                            <button class="btn btn-success" [disabled]="createStdForm.invalid" (click)="create()">Créer un étudiant</button>
                         </div>
                     </form>
                 </div>
