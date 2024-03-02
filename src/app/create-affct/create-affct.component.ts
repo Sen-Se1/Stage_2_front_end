@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { AuthService } from '../service/auth.service';
+import ObjectId  from 'bson-objectid';
+
 import {
   FormGroup,
   FormControl,
@@ -29,7 +31,7 @@ export class CreateAffctComponent {
   };
   stages: any[] = [];
   students: any[] = [];
-  inputCinValue!: string;
+  inputCinValue!: any;
   ngOnInit(): void {
     if (this.auth.isLoggedIn()) {
       this.auth.getAllStage().subscribe(
@@ -115,12 +117,13 @@ export class CreateAffctComponent {
   }
   onInputChange(event: any) {
     this.inputCinValue = event.target.value;
-    if (this.inputCinValue.length === 8) {
+    if ( this.inputCinValue.length === 8 ){
       for (const student of this.students) {
         if (student.cin === this.inputCinValue) {
           this.inputCinValue = student._id;
           break;
-        }
+        } 
+        this.inputCinValue = new ObjectId();
       }
     }
   }
@@ -157,6 +160,7 @@ export class CreateAffctComponent {
       dateD: this.data.dateD,
       dateF: this.data.dateF,
     }
+    console.log(sendData);
     this.auth.createAss(sendData).subscribe(
       (res: any) => {
         this.createAssForm.reset({

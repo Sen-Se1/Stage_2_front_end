@@ -3,6 +3,7 @@ import { AuthService } from '../service/auth.service';
 import { ActivatedRoute } from '@angular/router';
 import { FormGroup, FormControl, Validators, AbstractControl, ValidationErrors } from '@angular/forms';
 import { alert } from '../utils/alert';
+import ObjectId from 'bson-objectid';
 
 @Component({
   selector: 'app-update-affct',
@@ -15,7 +16,7 @@ export class UpdateAffctComponent {
   }
   alertService: alert;
   data = {
-    cin: 'default',
+    cin: '',
     codeS: 'default',
     lieuS: '',
     codeRap: '',
@@ -25,45 +26,38 @@ export class UpdateAffctComponent {
   students: any[] = [];
   stages: any[] = [];
   idAffct = ''
+  inputCinValue!: any;
+
   ngOnInit() {
     if (this.auth.isLoggedIn()) {
       this.route.params.subscribe(params => {
         this.idAffct = params['id']; // Retrieve the ID from the route parameters
-        this.auth.getByIdAss(this.idAffct).subscribe((res: any) => {
-          this.data = {
-            cin: res.data.cin._id,
-            codeS: res.data.codeS._id,
-            lieuS: res.data.lieuS,
-            codeRap: res.data.codeRap,
-            dateD: new Date(res.data.dateD).toISOString().split('T')[0],
-            dateF: new Date(res.data.dateF).toISOString().split('T')[0],
-          }
-          this.auth.getAllStu().subscribe((res: any) => {
-            this.students = res.data;
-            this.auth.getAllStage().subscribe((res: any) => {
-              this.stages = res.data;
-            }, err => {
-              if (err.status === 0) {
-                return this.alertService.danger("Problème système", "Nous avons un bug au niveau du serveur qui sera corrigé prochainement.");
-              }
-              if (err.error.message) {
-                return this.alertService.danger(err.error.status, err.error.message);
-              }
-              if (err.error.errors[0].msg) {
-                return this.alertService.danger(err.statusText, err.error.errors[0].msg);
-              }
-            });
-          }, err => {
-            if (err.status === 0) {
-              return this.alertService.danger("Problème système", "Nous avons un bug au niveau du serveur qui sera corrigé prochainement.");
-            }
-            if (err.error.message) {
-              return this.alertService.danger(err.error.status, err.error.message);
-            }
-            if (err.error.errors[0].msg) {
-              return this.alertService.danger(err.statusText, err.error.errors[0].msg);
-            }
-          });
+      });
+      this.auth.getByIdAss(this.idAffct).subscribe((res: any) => {
+        this.data = {
+          cin: res.data.cin.cin,
+          codeS: res.data.codeS._id,
+          lieuS: res.data.lieuS,
+          codeRap: res.data.codeRap,
+          dateD: new Date(res.data.dateD).toISOString().split('T')[0],
+          dateF: new Date(res.data.dateF).toISOString().split('T')[0],
+        }
+        this.inputCinValue = res.data.cin._id;
+      }, err => {
+        if (err.status === 0) {
+          return this.alertService.danger("Problème système", "Nous avons un bug au niveau du serveur qui sera corrigé prochainement.");
+        }
+        if (err.error.message) {
+          return this.alertService.danger(err.error.status, err.error.message);
+        }
+        if (err.error.errors[0].msg) {
+          return this.alertService.danger(err.statusText, err.error.errors[0].msg);
+        }
+      });
+      this.auth.getAllStu().subscribe((res: any) => {
+        this.students = res.data;
+        this.auth.getAllStage().subscribe((res: any) => {
+          this.stages = res.data;
         }, err => {
           if (err.status === 0) {
             return this.alertService.danger("Problème système", "Nous avons un bug au niveau du serveur qui sera corrigé prochainement.");
@@ -74,21 +68,33 @@ export class UpdateAffctComponent {
           if (err.error.errors[0].msg) {
             return this.alertService.danger(err.statusText, err.error.errors[0].msg);
           }
-        })
+        });
+      }, err => {
+        if (err.status === 0) {
+          return this.alertService.danger("Problème système", "Nous avons un bug au niveau du serveur qui sera corrigé prochainement.");
+        }
+        if (err.error.message) {
+          return this.alertService.danger(err.error.status, err.error.message);
+        }
+        if (err.error.errors[0].msg) {
+          return this.alertService.danger(err.statusText, err.error.errors[0].msg);
+        }
       });
     }
   }
   onInputChange(event: any) {
-    // this.inputCinValue = event.target.value;
-    // if (this.inputCinValue.length === 8) {
-    //   for (const student of this.students) {
-    //     if (student.cin === this.inputCinValue) {
-    //       this.inputCinValue = student._id;
-    //       break;
-    //     }
-    //   }
-    // }
+    this.inputCinValue = event.target.value;
+    if ( this.inputCinValue.length === 8 ){
+      for (const student of this.students) {
+        if (student.cin === this.inputCinValue) {
+          this.inputCinValue = student._id;
+          break;
+        } 
+        this.inputCinValue = new ObjectId();
+      }
+    }
   }
+
   updateAssForm = new FormGroup({
     cin: new FormControl('', [Validators.required, Validators.pattern(/^\d{8}$/),]),
     codeS: new FormControl('', [Validators.required, this.AssignmentValidator]),
@@ -137,7 +143,17 @@ export class UpdateAffctComponent {
   }
 
   update() {
-    this.auth.updateAss(this.idAffct, this.data).subscribe((res: any) => {
+    let sendData = {
+      cin: this.inputCinValue,
+      codeS: this.data.codeS,
+      lieuS: this.data.lieuS,
+      codeRap: this.data.codeRap,
+      dateD: this.data.dateD,
+      dateF: this.data.dateF,
+    }
+    console.log(sendData);
+
+    this.auth.updateAss(this.idAffct, sendData).subscribe((res: any) => {
       this.alertService.success('Avec succès', `L'affectation a été mise à jour avec succès.`)
     }, err => {
       if (err.status === 0) {
