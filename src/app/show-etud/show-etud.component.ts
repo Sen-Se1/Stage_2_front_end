@@ -24,7 +24,7 @@ export class ShowEtudComponent {
         this.students = res.data;
       }, err => {
         if (err.status === 0) {
-          return this.alertService.danger("System glitch", "We have a server-level bug that will be fixed shortly");
+          return this.alertService.danger("Problème système", "Nous avons un bug au niveau du serveur qui sera corrigé prochainement.");
         }
         if (err.error.message) {
           return this.alertService.danger(err.error.status, err.error.message);
@@ -37,13 +37,13 @@ export class ShowEtudComponent {
 
   }
   dangerBox(id: any) {
-    this.dialogBoxService.danger('Are you sure ?', 'If this student is deleted, all assignments associated with it will be deleted').subscribe(resp => {
+    this.dialogBoxService.danger('Es-tu sûr ?', 'Si cet élève est supprimé, tous les devoirs qui lui sont associés seront supprimés.').subscribe(resp => {
       if (resp.success) {
         this.auth.deleteStu(id).subscribe((res: any) => {
           const index = this.students.findIndex(student => student._id === id);
           // If the student is found, remove it from the array
           if (index !== -1) {
-            this.alertService.success('Successfully', `The student deleted successfully for the owner of the name: ${this.students[index].nom} ${this.students[index].prenom}`)
+            this.alertService.success('Avec succès', `L'étudiant a supprimé avec succès pour le propriétaire du nom: ${this.students[index].nom} ${this.students[index].prenom}`)
             this.students.splice(index, 1);
           }
           // Check if the current page is greater than the total number of pages
@@ -53,7 +53,7 @@ export class ShowEtudComponent {
           }
         }, err => {
           if (err.status === 0) {
-            return this.alertService.danger("System glitch", "We have a server-level bug that will be fixed shortly");
+            return this.alertService.danger("Problème système", "Nous avons un bug au niveau du serveur qui sera corrigé prochainement.");
           }
           if (err.error.message) {
             return this.alertService.danger(err.error.status, err.error.message);

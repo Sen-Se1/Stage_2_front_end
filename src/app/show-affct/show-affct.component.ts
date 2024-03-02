@@ -38,7 +38,7 @@ export class ShowAffctComponent {
         })
       }, err => {
         if (err.status === 0) {
-          return this.alertService.danger("System glitch", "We have a server-level bug that will be fixed shortly");
+          return this.alertService.danger("Problème système", "Nous avons un bug au niveau du serveur qui sera corrigé prochainement.");
         }
         if (err.error.message) {
           return this.alertService.danger(err.error.status, err.error.message);
@@ -50,13 +50,13 @@ export class ShowAffctComponent {
     }
   }
   dangerBox(id: any) {
-    this.dialogBoxService.danger('Are you sure ?', 'Do you want to delete this assignment ?').subscribe(resp => {
+    this.dialogBoxService.danger('Es-tu sûr ?', 'Voulez-vous supprimer cette affectation ?').subscribe(resp => {
       if (resp.success) {
         this.auth.deleteAss(id).subscribe((res: any) => {
           const index = this.assignments.findIndex(assignment => assignment._id === id);
           // If the student is found, remove it from the array
           if (index !== -1) {
-            this.alertService.success('Successfully', `The assignment has been deleted successfully for the owner of the cin: ${this.assignments[index].cin.cin}`)
+            this.alertService.success('Avec succès', `L'affectation a été supprimée avec succès pour le propriétaire du cin: ${this.assignments[index].cin.cin}`)
             this.assignments.splice(index, 1);
           }
           // Check if the current page is greater than the total number of pages
@@ -66,7 +66,7 @@ export class ShowAffctComponent {
           }
         }, err => {
           if (err.status === 0) {
-            return this.alertService.danger("System glitch", "We have a server-level bug that will be fixed shortly");
+            return this.alertService.danger("Problème système", "Nous avons un bug au niveau du serveur qui sera corrigé prochainement.");
           }
           if (err.error.message) {
             return this.alertService.danger(err.error.status, err.error.message);

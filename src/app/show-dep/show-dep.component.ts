@@ -24,7 +24,7 @@ export class ShowDepComponent {
         this.departments = res.data;
       }, err => {
         if (err.status === 0) {
-          return this.alertService.danger("System glitch", "We have a server-level bug that will be fixed shortly");
+          return this.alertService.danger("Problème système", "Nous avons un bug au niveau du serveur qui sera corrigé prochainement.");
         }
         if (err.error.message) {
           return this.alertService.danger(err.error.status, err.error.message);
@@ -36,13 +36,13 @@ export class ShowDepComponent {
     }
   }
   dangerBox(id: any) {
-    this.dialogBoxService.danger('Are you sure ?', 'If this department is deleted, all groups, students, and assignments associated with it will be deleted').subscribe(resp => {
+    this.dialogBoxService.danger('Es-tu sûr ?', 'Si ce département est supprimé, tous les groupes, étudiants et devoirs qui lui sont associés seront supprimés.').subscribe(resp => {
       if (resp.success) {
         this.auth.deleteDep(id).subscribe((res: any) => {
           const index = this.departments.findIndex(department => department._id === id);
           // If the department is found, remove it from the array
           if (index !== -1) {
-            this.alertService.success('Successfully', `The department has been deleted successfully for the owner of the label: ${this.departments[index].libelle}`)
+            this.alertService.success('Avec succès', `Le département a été supprimé avec succès pour le propriétaire du label: ${this.departments[index].libelle}`)
             this.departments.splice(index, 1);
           }
           // Check if the current page is greater than the total number of pages
@@ -52,7 +52,7 @@ export class ShowDepComponent {
           }
         }, err => {
           if (err.status === 0) {
-            return this.alertService.danger("System glitch", "We have a server-level bug that will be fixed shortly");
+            return this.alertService.danger("Problème système", "Nous avons un bug au niveau du serveur qui sera corrigé prochainement.");
           }
           if (err.error.message) {
             return this.alertService.danger(err.error.status, err.error.message);
