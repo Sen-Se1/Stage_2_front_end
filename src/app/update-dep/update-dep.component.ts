@@ -30,7 +30,7 @@ export class UpdateDepComponent {
           }
         }, err => {
           if (err.status === 0) {
-            return this.alertService.danger("System glitch", "We have a server-level bug that will be fixed shortly");
+            return this.alertService.danger("Problème système", "Nous avons un bug au niveau du serveur qui sera corrigé prochainement.");
           }
           if (err.error.message) {
             return this.alertService.danger(err.error.status, err.error.message);
@@ -56,10 +56,10 @@ export class UpdateDepComponent {
   }
   update() {
     this.auth.updateDep(this.idDep, this.data).subscribe((res: any) => {
-      this.alertService.success('Successfully', `The department has been updated successfully for the owner of the label: ${res.data.libelle}`)
+      this.alertService.success('Avec succès', `Le département a été mis à jour avec succès pour le propriétaire de Libelle: ${res.data.libelle}`)
     }, err => {
       if (err.status === 0) {
-        return this.alertService.danger("System glitch", "We have a server-level bug that will be fixed shortly");
+        return this.alertService.danger("Problème système", "Nous avons un bug au niveau du serveur qui sera corrigé prochainement.");
       }
       if (err.error.message) {
         return this.alertService.danger(err.error.status, err.error.message);

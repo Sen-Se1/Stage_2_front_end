@@ -35,7 +35,7 @@ export class UpdateGrpComponent {
             this.departments = res.data;
           }, err => {
             if (err.status === 0) {
-              return this.alertService.danger("System glitch", "We have a server-level bug that will be fixed shortly");
+              return this.alertService.danger("Problème système", "Nous avons un bug au niveau du serveur qui sera corrigé prochainement.");
             }
             if (err.error.message) {
               return this.alertService.danger(err.error.status, err.error.message);
@@ -46,7 +46,7 @@ export class UpdateGrpComponent {
           });
         }, err => {
           if (err.status === 0) {
-            return this.alertService.danger("System glitch", "We have a server-level bug that will be fixed shortly");
+            return this.alertService.danger("Problème système", "Nous avons un bug au niveau du serveur qui sera corrigé prochainement.");
           }
           if (err.error.message) {
             return this.alertService.danger(err.error.status, err.error.message);
@@ -83,10 +83,10 @@ export class UpdateGrpComponent {
   }
   update() {
     this.auth.updateGrp(this.idGrp, this.data).subscribe((res: any) => {
-      this.alertService.success('Successfully', `The group has been updated successfully for the owner of the label: ${res.data.libelle}`)
+      this.alertService.success('Avec succès', `Le groupe a été mis à jour avec succès pour le propriétaire du libelle: ${res.data.libelle}`)
     }, err => {
       if (err.status === 0) {
-        return this.alertService.danger("System glitch", "We have a server-level bug that will be fixed shortly");
+        return this.alertService.danger("Problème système", "Nous avons un bug au niveau du serveur qui sera corrigé prochainement.");
       }
       if (err.error.message) {
         return this.alertService.danger(err.error.status, err.error.message);
