@@ -41,15 +41,15 @@ export class CreateStudByFileComponent {
           file: '',
         });
         this.alertService.success(
-          'Successfully',
-          `A new students has been created successfully`
+          'Avec succès',
+          `Un nouvel étudiant a été créé avec succès.`
         );
       },
       (err) => {
         if (err.status === 0) {
           return this.alertService.danger(
-            'System glitch',
-            'We have a server-level bug that will be fixed shortly'
+            'Problème système',
+            'Nous avons un bug au niveau du serveur qui sera corrigé prochainement.'
           );
         }
         if (err.error.message) {
