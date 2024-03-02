@@ -20,7 +20,7 @@ export class SidebarComponent {
         this.loggedIn = res.data.username;
       }, err => {
         if (err.status === 0) {
-          return this.alertService.danger("System glitch", "We have a server-level bug that will be fixed shortly");
+          return this.alertService.danger("Problème système", "Nous avons un bug au niveau du serveur qui sera corrigé prochainement.");
         }
         if (err.error.message) {
           return this.alertService.danger(err.error.status, err.error.message);
@@ -29,13 +29,7 @@ export class SidebarComponent {
           return this.alertService.danger(err.statusText, err.error.errors[0].msg);
         }
       });
-      const savedValueDepartment = sessionStorage.getItem('isDepartmentOpen');
-      const savedGroup = sessionStorage.getItem('isGroupOpen');
-      const savedValueStudent = sessionStorage.getItem('isStudentOpen');
-      const savedValueStage = sessionStorage.getItem('isStageOpen');
-      const savedValueAssignment = sessionStorage.getItem('isAssignmentOpen');
 
-      
     }
   }
  
