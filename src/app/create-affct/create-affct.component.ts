@@ -14,20 +14,17 @@ export class CreateAffctComponent {
   }
   alertService: alert;
   data = {
-    cin: 'default',
+    cin: '',
     codeS: 'default',
     lieuS: '',
     codeRap: '',
     dateD: '',
     dateF: '',
   }
-  students: any[] = [];
   stages: any[] = [];
 
   ngOnInit(): void {
     if (this.auth.isLoggedIn()) {
-      this.auth.getAllStu().subscribe((res: any) => {
-        this.students = res.data;
         this.auth.getAllStage().subscribe((res: any) => {
           this.stages = res.data;
         }, err => {
@@ -41,17 +38,6 @@ export class CreateAffctComponent {
             return this.alertService.danger(err.statusText, err.error.errors[0].msg);
           }
         });
-      }, err => {
-        if (err.status === 0) {
-          return this.alertService.danger("System glitch", "We have a server-level bug that will be fixed shortly");
-        }
-        if (err.error.message) {
-          return this.alertService.danger(err.error.status, err.error.message);
-        }
-        if (err.error.errors[0].msg) {
-          return this.alertService.danger(err.statusText, err.error.errors[0].msg);
-        }
-      });
     }
   }
   createAssForm = new FormGroup({

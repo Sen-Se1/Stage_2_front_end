@@ -17,13 +17,9 @@
                 <div class="card-body justify-content-center">
                     <form class="form-inline" [formGroup]="createAssForm" autocomplete="off">
                         <div class="input-group mb-3">
-                            <label class="input-group-text" for="codeInput">Cin :&nbsp;&nbsp;&nbsp;</label>
-                            <select [(ngModel)]="data.cin" formControlName="cin" name="cin"
-                                class="form-select cur-point" aria-label="Default select example">
-                                <option [ngValue]="'default'" selected>Select a CIN</option>
-                                <option *ngFor="let student of students" [value]="student._id">{{ student.cin }}
-                                </option>
-                            </select>
+                            <label class="input-group-text" for="cin">Cin :</label>
+                            <input [(ngModel)]="data.cin" formControlName="cin" name="cin" class="form-control"
+                                id="codeInput" type="text" placeholder="Cin..." />
                         </div>
                         <div class="form-text text-danger alert-custom"
                             *ngIf="Cin.invalid && (Cin.touched || Cin.dirty)">
