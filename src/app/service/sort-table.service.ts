@@ -83,7 +83,7 @@ export class SortTableService {
       assignment.cin.prenom.toLowerCase().includes(searchValue.toLowerCase()) ||
       assignment.codeS.codeS.toLowerCase().includes(searchValue.toLowerCase()) ||
       assignment.lieuS.toLowerCase().includes(searchValue.toLowerCase()) ||
-      assignment.codeRap.toLowerCase().includes(searchValue.toLowerCase()) ||
+      // assignment.codeRap.toLowerCase().includes(searchValue.toLowerCase()) ||
       assignment.dateD.toLowerCase().includes(searchValue.toLowerCase()) ||
       assignment.dateF.toLowerCase().includes(searchValue.toLowerCase())
     );
