@@ -84,12 +84,16 @@ export class UpdateAffctComponent {
   }
   onInputChange(event: any) {
     this.inputCinValue = event.target.value;
-    if ( this.inputCinValue.length === 8 ){
+    if (this.inputCinValue.length === 8) {
+      let found = false;
       for (const student of this.students) {
         if (student.cin === this.inputCinValue) {
           this.inputCinValue = student._id;
+          found = true;
           break;
-        } 
+        }
+      }
+      if (!found) {
         this.inputCinValue = new ObjectId().toHexString();
       }
     }
