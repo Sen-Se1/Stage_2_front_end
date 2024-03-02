@@ -56,17 +56,6 @@
                             <div *ngIf="Location.hasError('required')">Le lieu de stage est obligatoire.</div>
                         </div>
                         <div class="input-group mb-3">
-                            <label class="input-group-text" for="labelInput">Code de rapport :</label>
-                            <input [(ngModel)]="data.codeRap" formControlName="codeRap" name="codeRap"
-                                class="form-control" id="labelInput" type="text" placeholder="Code de rapport..." />
-                        </div>
-                        <div class="form-text text-danger alert-custom"
-                            *ngIf="CodeRap.invalid && (CodeRap.touched || CodeRap.dirty)">
-                            <div *ngIf="CodeRap.hasError('required')">Le code de rapport est obligatoire.</div>
-                            <div *ngIf="CodeRap.hasError('minlength')">Le code de département doit comporter au moins 3 caractères long.</div>
-                            <div *ngIf="CodeRap.hasError('pattern')">Le code de rapport doit contenir uniquement des lettres et des chiffres.</div>
-                        </div>
-                        <div class="input-group mb-3">
                             <label class="input-group-text" for="codeInput">Date de début :</label>
                             <input [(ngModel)]="data.dateD" formControlName="dateD" name="dateD"
                                 class="form-control cur-text" id="codeInput" type="date" />

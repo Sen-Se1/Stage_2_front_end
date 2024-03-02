@@ -25,7 +25,6 @@ export class CreateAffctComponent {
     cin: '',
     codeS: 'default',
     lieuS: '',
-    codeRap: '',
     dateD: '',
     dateF: '',
   };
@@ -93,11 +92,6 @@ export class CreateAffctComponent {
     ]),
     codeS: new FormControl('', [Validators.required, this.AssignmentValidator]),
     lieuS: new FormControl('', [Validators.required]),
-    codeRap: new FormControl('', [
-      Validators.required,
-      Validators.minLength(3),
-      Validators.pattern(/^[a-zA-Z0-9]+$/),
-    ]),
     dateD: new FormControl('', [Validators.required, this.startDateValidator]),
     dateF: new FormControl('', [Validators.required, this.startDateValidator]),
   });
@@ -143,9 +137,6 @@ export class CreateAffctComponent {
   get Location(): FormControl {
     return this.createAssForm.get('lieuS') as FormControl;
   }
-  get CodeRap(): FormControl {
-    return this.createAssForm.get('codeRap') as FormControl;
-  }
 
   get DateD(): FormControl {
     return this.createAssForm.get('dateD') as FormControl;
@@ -160,7 +151,6 @@ export class CreateAffctComponent {
       cin: this.inputCinValue,
       codeS: this.data.codeS,
       lieuS: this.data.lieuS,
-      codeRap: this.data.codeRap,
       dateD: this.data.dateD,
       dateF: this.data.dateF,
     }
@@ -170,7 +160,6 @@ export class CreateAffctComponent {
           cin: '',
           codeS: 'default',
           lieuS: '',
-          codeRap: '',
           dateD: '',
           dateF: '',
         });
