@@ -3,15 +3,15 @@
 <div id="layoutSidenav_content">
     <main>
         <div class="container-fluid px-4">
-            <h1 class="mt-4">Group</h1>
+            <h1 class="mt-4">Groupe</h1>
             <ol class="breadcrumb mb-4">
-                <li class="breadcrumb-item active">Update Group</li>
+                <li class="breadcrumb-item active">Mettre à jour le groupe</li>
             </ol>
             <div class="card mb-4">
                 <div class="card-header d-flex justify-content-between align-items-center">
                     <div>
                         <i class="fas fa-users me-1"></i>
-                        Group
+                        Groupe
                     </div>
                 </div>
                 <div class="card-body justify-content-center">
@@ -19,42 +19,39 @@
                         <div class="input-group mb-3">
                             <label class="input-group-text" for="codeInput">Code :</label>
                             <input [(ngModel)]="data.codeG" formControlName="code" name="Code" class="form-control"
-                                id="codeInput" type="text" placeholder="Group Code..." />
+                                id="codeInput" type="text" placeholder="Le code de groupe..." />
                         </div>
                         <div class="form-text text-danger alert-custom"
                             *ngIf="Code.invalid && (Code.touched || Code.dirty)">
-                            <div *ngIf="Code.hasError('required')">Group code is required.</div>
-                            <div *ngIf="Code.hasError('minlength')">Group code should be at least 3 characters long.
-                            </div>
-                            <div *ngIf="Code.hasError('pattern')">Group code should only contain letters and numbers.
-                            </div>
+                            <div *ngIf="Code.hasError('required')">Le code de groupe est obligatoire.</div>
+                            <div *ngIf="Code.hasError('minlength')">Le code de groupe doit comporter au moins 3 caractères long.</div>
+                            <div *ngIf="Code.hasError('pattern')">Le code de groupe ne doit contenir que des lettres et des chiffres.</div>
                         </div>
                         <div class="input-group mb-3">
-                            <label class="input-group-text" for="labelInput">Label :</label>
+                            <label class="input-group-text" for="labelInput">Libelle :</label>
                             <input [(ngModel)]="data.libelle" formControlName="label" name="libelle"
-                                class="form-control" id="labelInput" type="text" placeholder="Group Label..." />
+                                class="form-control" id="labelInput" type="text" placeholder="La libelle de groupe..." />
                         </div>
                         <div class="form-text text-danger alert-custom"
                             *ngIf="Label.invalid && (Label.touched || Label.dirty)">
-                            <div *ngIf="Label.hasError('required')">Group label is required.</div>
+                            <div *ngIf="Label.hasError('required')">La libelle de groupe est obligatoire.</div>
                         </div>
                         <div class="input-group mb-3">
-                            <label class="input-group-text" for="codeInput">Department :&nbsp;&nbsp;&nbsp;</label>
+                            <label class="input-group-text" for="codeInput">Département :&nbsp;&nbsp;&nbsp;</label>
                             <select [(ngModel)]="data.codeD" formControlName="codeD" name="codeD" name="codeD"
                                 class="form-select cur-point" aria-label="Default select example">
-                                <option [ngValue]="'default'" selected>Select a department</option>
+                                <option [ngValue]="'default'" selected>Sélectionnez un département</option>
                                 <option *ngFor="let department of departments" [value]="department._id">{{
                                     department.libelle }}</option>
                             </select>
                         </div>
                         <div class="form-text text-danger alert-custom"
                             *ngIf="CodeD.invalid && (CodeD.touched || CodeD.dirty)">
-                            <div *ngIf="CodeD.hasError('required')">Department is required.</div>
-                            <div *ngIf="CodeD.hasError('invalidDepartment')">Please select a valid department.</div>
+                            <div *ngIf="CodeD.hasError('required')">Le département est obligatoire.</div>
+                            <div *ngIf="CodeD.hasError('invalidDepartment')">Veuillez sélectionner un département valide.</div>
                         </div>
                         <div class="input-group mb-3">
-                            <button class="btn btn-success" [disabled]="updateGrpForm.invalid" (click)="update()">Update
-                                Group</button>
+                            <button class="btn btn-success" [disabled]="updateGrpForm.invalid" (click)="update()">Mettre à jour le groupe</button>
                         </div>
                     </form>
                 </div>
