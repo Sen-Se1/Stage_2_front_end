@@ -29,8 +29,6 @@ export class SidebarComponent {
           return this.alertService.danger(err.statusText, err.error.errors[0].msg);
         }
       });
-
     }
   }
- 
 }
