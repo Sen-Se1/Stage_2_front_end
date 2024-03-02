@@ -32,10 +32,10 @@ export class AddModComponent {
         passwordConfirm: '',
         role: 'default',
       });
-      this.alertService.success('Successfully', `A new moderator has been created successfully`)
+      this.alertService.success('Avec succès', `Un nouveau modérateur a été créé avec succès.`)
     }, err => {
       if (err.status === 0) {
-        return this.alertService.danger("System glitch", "We have a server-level bug that will be fixed shortly");
+        return this.alertService.danger("Problème système", "Nous avons un bug au niveau du serveur qui sera corrigé prochainement.");
       }
       if (err.error.message) {
         return this.alertService.danger(err.error.status, err.error.message);
