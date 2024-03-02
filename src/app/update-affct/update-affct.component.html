@@ -3,9 +3,9 @@
 <div id="layoutSidenav_content">
     <main>
         <div class="container-fluid px-4">
-            <h1 class="mt-4">Assignment</h1>
+            <h1 class="mt-4">Affectation</h1>
             <ol class="breadcrumb mb-4">
-                <li class="breadcrumb-item active">Update Assignment</li>
+                <li class="breadcrumb-item active">Mettre à jour l'affectation</li>
             </ol>
             <div class="card mb-4">
                 <div class="card-header d-flex justify-content-between align-items-center">
@@ -16,7 +16,7 @@
                             <path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2" />
                             <path d="m9 14 2 2 4-4" />
                         </svg>
-                        &nbsp;Assignment
+                        &nbsp;Affectation
                     </div>
                 </div>
                 <div class="card-body justify-content-center">
@@ -36,63 +36,60 @@
                             <div *ngIf="Cin.hasError('invalidCodeG')">Please select a valid cin.</div>
                         </div>
                         <div class="input-group mb-3">
-                            <label class="input-group-text" for="codeInput">Stage Code :&nbsp;&nbsp;&nbsp;</label>
+                            <label class="input-group-text" for="codeInput">Code de stage :</label>
                             <select [(ngModel)]="data.codeS" formControlName="codeS" name="codeS"
                                 class="form-select cur-point" aria-label="Default select example">
-                                <option [ngValue]="'default'" selected>Select a Stage Code</option>
+                                <option [ngValue]="'default'" selected>Sélectionnez un code de stage</option>
                                 <option *ngFor="let stage of stages" [value]="stage._id">{{ stage.codeS }}</option>
                             </select>
                         </div>
                         <div class="form-text text-danger alert-custom"
                             *ngIf="CodeS.invalid && (CodeS.touched || CodeS.dirty)">
-                            <div *ngIf="CodeS.hasError('required')">Stage Code is required.</div>
-                            <div *ngIf="CodeS.hasError('invalidCodeG')">Please select a valid stage Code.</div>
+                            <div *ngIf="CodeS.hasError('required')">Le code de stage est obligatoire.</div>
+                            <div *ngIf="CodeS.hasError('invalidCodeG')">Veuillez sélectionner un code de stage valide.</div>
                         </div>
                         <div class="input-group mb-3">
-                            <label class="input-group-text" for="codeInput">Stage Location :</label>
+                            <label class="input-group-text" for="codeInput">Lieu de stage :</label>
                             <input [(ngModel)]="data.lieuS" formControlName="lieuS" name="lieuS" class="form-control"
-                                id="codeInput" type="text" placeholder="Stage Location..." />
+                                id="codeInput" type="text" placeholder="Lieu de stage..." />
                         </div>
                         <div class="form-text text-danger alert-custom"
                             *ngIf="Location.invalid && (Location.touched || Location.dirty)">
-                            <div *ngIf="Location.hasError('required')">Stage Location is required.</div>
+                            <div *ngIf="Location.hasError('required')">Le lieu de stage est obligatoire.</div>
                         </div>
                         <div class="input-group mb-3">
-                            <label class="input-group-text" for="labelInput">Rapport Code :</label>
+                            <label class="input-group-text" for="labelInput">Code de rapport :</label>
                             <input [(ngModel)]="data.codeRap" formControlName="codeRap" name="codeRap"
                                 class="form-control" id="labelInput" type="text" placeholder="Rapport Code..." />
                         </div>
                         <div class="form-text text-danger alert-custom"
                             *ngIf="CodeRap.invalid && (CodeRap.touched || CodeRap.dirty)">
-                            <div *ngIf="CodeRap.hasError('required')">Rapport code is required.</div>
-                            <div *ngIf="CodeRap.hasError('minlength')">Rapport code should be at least 3 characters
-                                long.</div>
-                            <div *ngIf="CodeRap.hasError('pattern')">Rapport code should only contain letters and
-                                numbers.</div>
+                            <div *ngIf="CodeRap.hasError('required')">Le code de rapport est obligatoire.</div>
+                            <div *ngIf="CodeRap.hasError('minlength')">Le code de département doit comporter au moins 3 caractères long.</div>
+                            <div *ngIf="CodeRap.hasError('pattern')">Le code de rapport doit contenir uniquement des lettres et des chiffres.</div>
                         </div>
                         <div class="input-group mb-3">
-                            <label class="input-group-text" for="codeInput">Start Date :</label>
+                            <label class="input-group-text" for="codeInput">Date de début :</label>
                             <input [(ngModel)]="data.dateD" formControlName="dateD" name="dateD"
                                 class="form-control cur-text" id="codeInput" type="date" />
                         </div>
                         <div class="form-text text-danger alert-custom"
                             *ngIf="DateD.invalid && (DateD.touched || DateD.dirty)">
-                            <div *ngIf="DateD.hasError('required')">Start date is required.</div>
-                            <div *ngIf="DateD.hasError('startDateInvalid')">Start date should be today or later.</div>
+                            <div *ngIf="DateD.hasError('required')">La date de début est obligatoire.</div>
+                            <div *ngIf="DateD.hasError('startDateInvalid')">La date de début doit être aujourd'hui ou plus tard.</div>
                         </div>
                         <div class="input-group mb-3">
-                            <label class="input-group-text" for="labelInput">End Date :</label>
+                            <label class="input-group-text" for="labelInput">Date de fin :</label>
                             <input [(ngModel)]="data.dateF" formControlName="dateF" name="dateF"
                                 class="form-control cur-text" id="labelInput" type="date" />
                         </div>
                         <div class="form-text text-danger alert-custom"
                             *ngIf="DateF.invalid && (DateF.touched || DateF.dirty)">
-                            <div *ngIf="DateF.hasError('required')">End date is required.</div>
-                            <div *ngIf="DateF.hasError('startDateInvalid')">End date should be today or later.</div>
+                            <div *ngIf="DateF.hasError('required')">La date de fin est obligatoire.</div>
+                            <div *ngIf="DateF.hasError('startDateInvalid')">La date de fin doit être aujourd'hui ou plus tard.</div>
                         </div>
                         <div class="input-group mb-3">
-                            <button class="btn btn-success" [disabled]="updateAssForm.invalid" (click)="update()">Update
-                                Assignment</button>
+                            <button class="btn btn-success" [disabled]="updateAssForm.invalid" (click)="update()">Mettre à jour l'affectation</button>
                         </div>
                     </form>
                 </div>

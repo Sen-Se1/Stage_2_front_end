@@ -4,11 +4,11 @@
     <main>
         <div class="container-fluid px-4">
             <h1 class="mt-4">
-                Assignment
+                Affectation
             </h1>
             <ol class="breadcrumb mb-4">
                 <li class="breadcrumb-item active">
-                    Show All Assignments
+                    Afficher toutes les affectations
                 </li>
             </ol>
             <div class="card mb-4">
@@ -20,12 +20,12 @@
                             <path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2" />
                             <path d="m9 14 2 2 4-4" />
                         </svg>
-                        &nbsp;Assignments
+                        &nbsp;Affectations
                     </div>
                     <form class="form-inline">
                         <div class="input-group">
                             <input class="form-control" type="text" [(ngModel)]="searchValue" name="searchValue"
-                                placeholder="Search for..." />
+                                placeholder="Rechercher ..." />
                         </div>
                     </form>
                 </div>
@@ -43,35 +43,35 @@
                                     </th>
                                     <th (click)="sortTable('codeS.codeS')"
                                         class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
-                                        Stage Code
+                                        Code de stage
                                         <span class="sort-indicator" *ngIf="sortTableService.sortKey === 'codeS.codeS'">
                                             {{ sortTableService.reverse ? '▼' : '▲' }}
                                         </span>
                                     </th>
                                     <th (click)="sortTable('lieuS')"
                                         class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                        Stage Location
+                                        Lieu de stage
                                         <span class="sort-indicator" *ngIf="sortTableService.sortKey === 'lieuS'">
                                             {{ sortTableService.reverse ? '▼' : '▲' }}
                                         </span>
                                     </th>
                                     <th (click)="sortTable('codeRap')"
                                         class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
-                                        Rapport Code
+                                        Code de rapport
                                         <span class="sort-indicator" *ngIf="sortTableService.sortKey === 'codeRap'">
                                             {{ sortTableService.reverse ? '▼' : '▲' }}
                                         </span>
                                     </th>
                                     <th (click)="sortTable('dateD')"
                                         class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                        Start Date
+                                        Date de début
                                         <span class="sort-indicator" *ngIf="sortTableService.sortKey === 'dateD'">
                                             {{ sortTableService.reverse ? '▼' : '▲' }}
                                         </span>
                                     </th>
                                     <th (click)="sortTable('dateF')"
                                         class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
-                                        End Date
+                                        Date de fin
                                         <span class="sort-indicator" *ngIf="sortTableService.sortKey === 'dateF'">
                                             {{ sortTableService.reverse ? '▼' : '▲' }}
                                         </span>
@@ -131,13 +131,13 @@
                                         <td class="align-middle text-center text-sm">
                                             <button class="btn btn-block btn-danger waves-effect"
                                                 (click)="dangerBox(assignment._id)">
-                                                Delete
+                                                Supprimer
                                             </button>
                                         </td>
                                         <td class="align-middle text-center text-sm">
                                             <button class="btn btn-block btn-success waves-effect"
                                                 (click)="update(assignment._id)">
-                                                Edit
+                                                Modifier
                                             </button>
                                         </td>
                                     </tr>
