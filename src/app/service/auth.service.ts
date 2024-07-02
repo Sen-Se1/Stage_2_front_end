@@ -13,7 +13,7 @@ export class AuthService {
     this.alertService = new alert();
   }
   private alertService: alert;
-  private url = 'http://127.0.0.1/';
+  private url = 'https://stage-2-back-end.onrender.com/';
   tokenExists(): any {
     let token = localStorage.getItem('token');
     if (token) return token;
