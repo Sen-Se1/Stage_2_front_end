@@ -115,6 +115,8 @@ export class AuthService {
     return this.http.post(this.url + 'admin', data, this.options);
   }
   getAllModAdmin() {
+    console.log('------options',this.options)
+
     return this.http.get(this.url + 'admin', this.options)
   }
   getByIdModAdmin(id: any) {
